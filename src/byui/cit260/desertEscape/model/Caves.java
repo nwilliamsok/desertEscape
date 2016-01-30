@@ -15,12 +15,12 @@ import java.util.Objects;
 public class Caves implements Serializable{
     
 
-private String visited;
-private double amountRemaining;
-private double row;
-private double column;
-private double resourceGems;
-private String description;
+    private String visited;
+    private double amountRemaining;
+    private double row;
+    private double column;
+    private double resourceGems;
+    private String description;
 
     public Caves() {
     }

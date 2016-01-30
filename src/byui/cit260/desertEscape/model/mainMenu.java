@@ -5,10 +5,67 @@
  */
 package byui.cit260.desertEscape.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 /**
  *
  * @author NicolasWilliams
  */
-public class mainMenu {
+public class mainMenu implements Serializable{
+    
+    private double activePlayer;
+    private String description;
+
+    public mainMenu() {
+    }
+
+    public double getActivePlayer() {
+        return activePlayer;
+    }
+
+    public void setActivePlayer(double activePlayer) {
+        this.activePlayer = activePlayer;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 29 * hash + (int) (Double.doubleToLongBits(this.activePlayer) ^ (Double.doubleToLongBits(this.activePlayer) >>> 32));
+        hash = 29 * hash + Objects.hashCode(this.description);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final mainMenu other = (mainMenu) obj;
+        if (Double.doubleToLongBits(this.activePlayer) != Double.doubleToLongBits(other.activePlayer)) {
+            return false;
+        }
+        if (!Objects.equals(this.description, other.description)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "mainMenu{" + "activePlayer=" + activePlayer + ", description=" + description + '}';
+    }
+
     
 }
