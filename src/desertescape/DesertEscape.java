@@ -12,7 +12,7 @@ import byui.cit260.desertEscape.model.Options;
 import byui.cit260.desertEscape.model.Player;
 import byui.cit260.desertEscape.model.Pyramid;
 import byui.cit260.desertEscape.model.Shop;
-import byui.cit260.desertEscape.model.mainMenu;
+import byui.cit260.desertEscape.model.MainMenu;
 
 /**
  *
@@ -32,7 +32,7 @@ public class DesertEscape {
         Player playerOne = new Player();
         Pyramid pyramidOne = new Pyramid();
         Shop shopOne = new Shop();
-        mainMenu mainMenuOne = new mainMenu();
+        MainMenu mainMenuOne = new MainMenu();
         
         
                 
