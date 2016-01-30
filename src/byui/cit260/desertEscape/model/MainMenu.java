@@ -12,12 +12,12 @@ import java.util.Objects;
  *
  * @author NicolasWilliams
  */
-public class mainMenu implements Serializable{
+public class MainMenu implements Serializable{
     
     private double activePlayer;
     private String description;
 
-    public mainMenu() {
+    public MainMenu() {
     }
 
     public double getActivePlayer() {
@@ -38,9 +38,9 @@ public class mainMenu implements Serializable{
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 29 * hash + (int) (Double.doubleToLongBits(this.activePlayer) ^ (Double.doubleToLongBits(this.activePlayer) >>> 32));
-        hash = 29 * hash + Objects.hashCode(this.description);
+        int hash = 7;
+        hash = 11 * hash + (int) (Double.doubleToLongBits(this.activePlayer) ^ (Double.doubleToLongBits(this.activePlayer) >>> 32));
+        hash = 11 * hash + Objects.hashCode(this.description);
         return hash;
     }
 
@@ -52,7 +52,7 @@ public class mainMenu implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final mainMenu other = (mainMenu) obj;
+        final MainMenu other = (MainMenu) obj;
         if (Double.doubleToLongBits(this.activePlayer) != Double.doubleToLongBits(other.activePlayer)) {
             return false;
         }
@@ -64,8 +64,9 @@ public class mainMenu implements Serializable{
 
     @Override
     public String toString() {
-        return "mainMenu{" + "activePlayer=" + activePlayer + ", description=" + description + '}';
+        return "MainMenu{" + "activePlayer=" + activePlayer + ", description=" + description + '}';
     }
-
+    
+    
     
 }
