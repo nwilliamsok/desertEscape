@@ -16,7 +16,7 @@ public class ObjectiveControlTest {
     
     public ObjectiveControlTest() {
     }
-
+    
     /**
      * Test of calcVolumeOfPit method, of class ObjectiveControl.
      */
@@ -125,6 +125,85 @@ public class ObjectiveControlTest {
         assertEquals(expResult, result, 0.0001);
         
         
+    }
+
+    /**
+     * Test of calcWindChill method, of class ObjectiveControl.
+     */
+    
+    @Test
+    public void testCalcWindChill() {
+        System.out.println("calcWindChill");
+        
+        //Test Case 1
+        
+        System.out.println("\tTest case #1");
+        double temp = 70.0;
+        double velocity = 2.0;
+        ObjectiveControl instance = new ObjectiveControl();
+        double expResult = 73.0;
+        double result = instance.calcWindChill(temp, velocity);
+        assertEquals(expResult, result, 0.5);
+        
+        //Test Case 2
+        
+        System.out.println("\tTest case #2");
+        temp = 65.0;
+        velocity = -2.0;
+
+        expResult = -1.0;
+        result = instance.calcWindChill(temp, velocity);
+        assertEquals(expResult, result, 0.5);
+        
+        //Test Case 3
+        
+        System.out.println("\tTest case #3");
+        temp = -1.0;
+        velocity = 80.0;
+
+        expResult = -38.0;
+        result = instance.calcWindChill(temp, velocity);
+        assertEquals(expResult, result, 0.5);
+        
+        //Test Case 4
+        
+        System.out.println("\tTest case #4");
+        temp = 2.0;
+        velocity = 0.0;
+
+        expResult = -1.0;
+        result = instance.calcWindChill(temp, velocity);
+        assertEquals(expResult, result, 0.5);
+        
+        //Test Case 5
+        
+        System.out.println("\tTest case #5");
+        temp = 0.0;
+        velocity = 150.0;
+
+        expResult = -44.0;
+        result = instance.calcWindChill(temp, velocity);
+        assertEquals(expResult, result, 0.0);
+        
+        //Test Case 5
+        
+        System.out.println("\tTest case #6");
+        temp = -1000.0;
+        velocity = 1500.0;
+
+        expResult = -2079.0;
+        result = instance.calcWindChill(temp, velocity);
+        assertEquals(expResult, result, 0.0);
+        
+        //Test Case 5
+        
+        System.out.println("\tTest case #7");
+        temp = 45.0;
+        velocity = 1;
+
+        expResult = 47.0;
+        result = instance.calcWindChill(temp, velocity);
+        assertEquals(expResult, result, 0.0);
     }
     
 }

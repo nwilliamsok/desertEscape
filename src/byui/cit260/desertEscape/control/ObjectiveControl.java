@@ -29,5 +29,16 @@ public double calcVolumeOfPit(double height,double width, double length){
 	return volume;
     
 }  
+
+public double calcWindChill (double temp, double velocity) {
+    
+    if (velocity < 1) { 
+		return -1;
+    }
+    
+    double windChill = Math.round(((35.74 + (0.6215 * temp) - (35.75 * (Math.pow(velocity,0.16))) + (0.4275 * temp * (Math.pow(velocity,0.16))))* 2) / 2);
+    return windChill;
+    
+}
     
 }
