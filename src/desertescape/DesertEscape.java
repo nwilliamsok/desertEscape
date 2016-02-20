@@ -11,8 +11,8 @@ import byui.cit260.desertEscape.model.Inventory;
 import byui.cit260.desertEscape.model.Options;
 import byui.cit260.desertEscape.model.Player;
 import byui.cit260.desertEscape.model.Pyramid;
-import byui.cit260.desertEscape.model.Shop;
 import byui.cit260.desertEscape.model.MainMenu;
+import byui.cit260.desertEscape.view.StartProgramView;
 
 /**
  *
@@ -23,7 +23,16 @@ public class DesertEscape {
     /**
      * @param args the command line arguments
      */
+    
+    private static Game currentGame = null;
+    private static Player player = null;
+    
+    
     public static void main(String[] args) {
+        
+        StartProgramView startProgramView = new StartProgramView();
+        startProgramView.displayStartProgramView();
+        
         
         Caves cavesOne = new Caves();
         Desert desertOne = new Desert();
@@ -31,7 +40,6 @@ public class DesertEscape {
         Options optionsOne = new Options();
         Player playerOne = new Player();
         Pyramid pyramidOne = new Pyramid();
-        Shop shopOne = new Shop();
         MainMenu mainMenuOne = new MainMenu();
         
         
@@ -66,16 +74,7 @@ public class DesertEscape {
         
         String desertInfo = desertOne.toString();
         System.out.println(desertInfo);
-        
-        
-        shopOne.setInventoryType("Inventory Item");
-        shopOne.setiQuantity(1);
-        shopOne.setShopType("Shop Item");
-        shopOne.setsQuantity(5);
-        
-        String shopInfo = shopOne.toString();
-        System.out.println(shopInfo);
-        
+      
         
         playerOne.setName("Player Name");
         playerOne.setGender("Male");
@@ -97,5 +96,24 @@ public class DesertEscape {
         String mainMenuInfo = mainMenuOne.toString();
         System.out.println(mainMenuInfo);
     }
+
+    public static Game getCurrentGame() {
+        return currentGame;
+    }
+
+    public static void setCurrentGame(Game currentGame) {
+        DesertEscape.currentGame = currentGame;
+    }
+
+    public static Player getPlayer() {
+        return player;
+    }
+
+    public static void setPlayer(Player player) {
+        DesertEscape.player = player;
+    }
+
+    
+            
     
 }

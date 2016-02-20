@@ -5,10 +5,28 @@
  */
 package byui.cit260.desertEscape.control;
 
+import byui.cit260.desertEscape.model.Player;
+import desertescape.DesertEscape;
+
 /**
  *
  * @author NicolasWilliams
  */
 public class GameControl {
+
+   
+    public static Player createPlayer(String name) {
+            if (name == null) {
+                return null;
+            }
+            
+            Player player = new Player();
+            player.setName(name);
+            
+            DesertEscape.setPlayer(player);
+            
+            return player;
+        }
+        
     
 }
