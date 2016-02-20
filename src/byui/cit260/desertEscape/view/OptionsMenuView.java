@@ -11,27 +11,26 @@ import java.util.Scanner;
  *
  * @author NicolasWilliams
  */
-public class MainMenuView {
-    private String menu;
+public class OptionsMenuView {
+    private String options;
 
-    public MainMenuView() {
-        this.menu = "\n"
-                  + "\n---------------------------------------"   
-                  + "\n|              Main Menu              |"
-                  + "\n---------------------------------------"
-                  + "\n                                       "
-                  + "\n      N -      New Game                "
-                  + "\n      R -  Resume Saved Game           "
-                  + "\n      O -      Options                 "
-                  + "\n      H -        Help                  "
-                  + "\n      Q -        Quit                  "
-                  + "\n                                       "
-                  + "\n---------------------------------------";
+    public OptionsMenuView() {
+        this.options = "\n                                          "
+                     + "\n------------------------------------------"
+                     + "\n|             Options Menu               |"
+                     + "\n------------------------------------------"
+                     + "\n                                          "
+                     + "\n           D - Difficulty                 "
+                     + "\n           H -    Help                    "
+                     + "\n           B -    Back                    "
+                     + "\n           Q -    Quit                    "
+                     + "\n                                          "
+                     + "\n------------------------------------------";
     }
     
- public void displayMainMenuView() {
+ public void displayOptionsMenuView() {
      
-        System.out.println ("\n" + this.menu);
+        System.out.println ("\n" + this.options);
         
         boolean done = false;
         do {
@@ -73,18 +72,17 @@ public class MainMenuView {
         choice = choice.toUpperCase();
         
         switch (choice){
-            case "N":
-                this.startNewGame();
+            case "D":
+                this.difficulty();
                 break;
-            case "R":
-                this.resumeGame();
-                break;
-            case "O":
-                this.displayOptionsMenu();
-                break;
-            case "H":
+            case "A":
                 this.displayHelpMenu();
                 break;
+            case "B":
+                this.goBack();
+                break;
+           
+           
             default:
                 System.out.println("\n*** Invalid Selection *** Try again, It's not that hard.");
                 break;
@@ -95,26 +93,26 @@ public class MainMenuView {
         
     }
 
-    private void startNewGame() {
-        System.out.println("*** startNewGame function called ***");
-    }
-
-    private void resumeGame() {
-        System.out.println("*** resumeGame function called ***");
-    }
-
-    private void displayOptionsMenu() {
-        OptionsMenuView optionsMenuView = new OptionsMenuView();
-        optionsMenuView.displayOptionsMenuView();
+    private void difficulty() {
+        DifficultyMenuView difficultyMenuView = new DifficultyMenuView();
+        difficultyMenuView.displayDifficultyMenuView();
     }
 
     private void displayHelpMenu() {
         HelpMenuView helpMenuView = new HelpMenuView();
         helpMenuView.displayHelpMenuView();
     }
-    
+
+    private void goBack() {
+        MainMenuView mainMenuView = new MainMenuView();
+        mainMenuView.displayMainMenuView();
+    }
 
     
+
+ 
+
     
+
     
 }
