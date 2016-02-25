@@ -11,7 +11,7 @@ package byui.cit260.desertEscape.control;
  */
 public class ObjectiveControl {
     
-public double calcVolumeOfPit(double height,double width, double length){
+public static double calcVolumeOfPit(double height,double width, double length){
 
 	if (height <= 0) { 
 		return -1;
@@ -30,7 +30,7 @@ public double calcVolumeOfPit(double height,double width, double length){
     
 }  
 
-public double calcWindChill (double temp, double velocity) {
+public static double calcWindChill (double temp, double velocity) {
     
     if (velocity < 1) { 
 		return -1;
