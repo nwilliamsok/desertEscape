@@ -12,8 +12,7 @@ import java.util.Objects;
  *
  * @author NicolasWilliams
  */
-public class Caves implements Serializable{
-    
+public class Caves implements Serializable {
 
     private String visited;
     private double amountRemaining;
@@ -72,8 +71,6 @@ public class Caves implements Serializable{
         return "Caves{" + "visited=" + visited + ", amountRemaining=" + amountRemaining + ", row=" + row + ", column=" + column + ", resourceGems=" + resourceGems + ", description=" + description + '}';
     }
 
-
-
     public String getVisited() {
         return visited;
     }
@@ -121,6 +118,5 @@ public class Caves implements Serializable{
     public void setDescription(String description) {
         this.description = description;
     }
-
 
 }

@@ -12,8 +12,8 @@ import java.util.Objects;
  *
  * @author NicolasWilliams
  */
-public class Player implements Serializable{
-    
+public class Player implements Serializable {
+
     private String name;
     private String gender;
     private double bestTime;
@@ -79,7 +79,5 @@ public class Player implements Serializable{
     public String toString() {
         return "Player{" + "name=" + name + ", gender=" + gender + ", bestTime=" + bestTime + '}';
     }
-    
-    
-    
+
 }

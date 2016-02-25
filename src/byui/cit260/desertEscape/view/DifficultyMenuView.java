@@ -12,64 +12,67 @@ import java.util.Scanner;
  * @author NicolasWilliams
  */
 public class DifficultyMenuView {
+
     private String diff;
 
     public DifficultyMenuView() {
         this.diff = "\n                                          "
-                     + "\n--------------------------------------------"
-                     + "\n|             Difficulty Menu              |"
-                     + "\n--------------------------------------------"
-                     + "\n                                            "
-                     + "\n            E -     Easy                    "
-                     + "\n            H -     Hard                    "
-                     + "\n            R -  Ridiculous                 "
-                     + "\n            Q -     Quit                    "
-                     + "\n                                            "
-                     + "\n--------------------------------------------";
+                + "\n--------------------------------------------"
+                + "\n|             Difficulty Menu              |"
+                + "\n--------------------------------------------"
+                + "\n                                            "
+                + "\n            E -     Easy                    "
+                + "\n            H -     Hard                    "
+                + "\n            R -  Ridiculous                 "
+                + "\n            Q -     Quit                    "
+                + "\n                                            "
+                + "\n--------------------------------------------";
     }
-    
- public void displayDifficultyMenuView() {
-        System.out.println ("\n" + this.diff);
-        
+
+    public void displayDifficultyMenuView() {
+        System.out.println("\n" + this.diff);
+
         boolean done = false;
         do {
-            
+
             String menuOption = this.getMenuOption();
-            if (menuOption.toUpperCase().equals ("Q"))
+            if (menuOption.toUpperCase().equals("Q")) {
                 return;
+            }
             done = this.doAction(menuOption);
-           
-        } while (!done);}
- 
+
+        } while (!done);
+    }
+
     private String getMenuOption() {
-        
+
         Scanner keyboard = new Scanner(System.in);
         String value = "";
         boolean valid = false;
-        
-        while (!valid ) {
-            System.out.println ("\nSelect an option");
-            
+
+        while (!valid) {
+            System.out.println("\nSelect an option");
+
             value = keyboard.nextLine();
             value = value.trim();
-            
+
             if (value.length() < 1) {
                 System.out.println("\nInvalid value: value can not be blank");
                 continue;
             }
-            
+
             break;
-            
+
         }
         return value;
-    
+
     }
-    
+
     private boolean doAction(String choice) {
-        
+
         choice = choice.toUpperCase();
-        
-        switch (choice){
+
+        switch (choice) {
             case "E":
                 this.easy();
                 break;
@@ -81,11 +84,11 @@ public class DifficultyMenuView {
             default:
                 System.out.println("\n*** Invalid Selection *** Try again, It's not that hard.");
                 break;
-                
+
         }
-            
+
         return true;
-        
+
     }
 
     private void easy() {
@@ -106,15 +109,4 @@ public class DifficultyMenuView {
         optionsMenuView.displayOptionsMenuView();
     }
 
- 
-
-   
-
-  
-
- 
-
-    
-    
-    
 }

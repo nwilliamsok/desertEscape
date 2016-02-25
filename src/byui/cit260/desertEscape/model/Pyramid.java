@@ -12,8 +12,8 @@ import java.util.Objects;
  *
  * @author NicolasWilliams
  */
-public class Pyramid implements Serializable{
-    
+public class Pyramid implements Serializable {
+
     private String visited;
     private double amountRemaining;
     private double row;
@@ -71,8 +71,6 @@ public class Pyramid implements Serializable{
         return true;
     }
 
-    
-    
     public String getVisited() {
         return visited;
     }
@@ -121,5 +119,4 @@ public class Pyramid implements Serializable{
         this.description = description;
     }
 
-    
 }

@@ -12,8 +12,8 @@ import java.util.Objects;
  *
  * @author NicolasWilliams
  */
-public class Desert implements Serializable{
-    
+public class Desert implements Serializable {
+
     private String visited;
     private double row;
     private double column;
@@ -93,5 +93,4 @@ public class Desert implements Serializable{
         return "Desert{" + "visited=" + visited + ", row=" + row + ", column=" + column + ", description=" + description + '}';
     }
 
-    
 }

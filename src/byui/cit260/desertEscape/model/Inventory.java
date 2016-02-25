@@ -12,8 +12,8 @@ import java.util.Objects;
  *
  * @author NicolasWilliams
  */
-public class Inventory implements Serializable{
-    
+public class Inventory implements Serializable {
+
     public String inventoryType;
     public double iQuantity;
     public String requiredType;
@@ -92,6 +92,5 @@ public class Inventory implements Serializable{
     public String toString() {
         return "Inventory{" + "inventoryType=" + inventoryType + ", iQuantity=" + iQuantity + ", requiredType=" + requiredType + ", requiredAmount=" + requiredAmount + '}';
     }
-    
-    
+
 }

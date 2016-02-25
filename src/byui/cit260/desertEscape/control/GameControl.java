@@ -14,19 +14,17 @@ import desertescape.DesertEscape;
  */
 public class GameControl {
 
-   
     public static Player createPlayer(String name) {
-            if (name == null) {
-                return null;
-            }
-            
-            Player player = new Player();
-            player.setName(name);
-            
-            DesertEscape.setPlayer(player);
-            
-            return player;
+        if (name == null) {
+            return null;
         }
-        
-    
+
+        Player player = new Player();
+        player.setName(name);
+
+        DesertEscape.setPlayer(player);
+
+        return player;
+    }
+
 }

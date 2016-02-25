@@ -12,8 +12,8 @@ import java.util.Objects;
  *
  * @author NicolasWilliams
  */
-public class Options implements Serializable{
-    
+public class Options implements Serializable {
+
     private double difficulty;
     private double savedGame;
     private String description;
@@ -80,5 +80,4 @@ public class Options implements Serializable{
         return "Options{" + "difficulty=" + difficulty + ", savedGame=" + savedGame + ", description=" + description + '}';
     }
 
-    
 }

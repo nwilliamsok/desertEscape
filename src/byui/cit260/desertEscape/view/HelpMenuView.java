@@ -12,65 +12,67 @@ import java.util.Scanner;
  * @author NicolasWilliams
  */
 public class HelpMenuView {
+
     private String help;
 
     public HelpMenuView() {
-        this.help =  "\n                                          "
-                   + "\n------------------------------------------"
-                   + "\n |             Help Menu                 |"
-                   + "\n------------------------------------------"
-                   + "\n                                          "
-                   + "\n           S - Storyline                  "
-                   + "\n           A -   About                    "
-                   + "\n           M - Main Menu                  "                   
-                   + "\n           Q -    Quit                    "
-                   + "\n------------------------------------------";
+        this.help = "\n                                          "
+                + "\n------------------------------------------"
+                + "\n |             Help Menu                 |"
+                + "\n------------------------------------------"
+                + "\n                                          "
+                + "\n           S - Storyline                  "
+                + "\n           A -   About                    "
+                + "\n           M - Main Menu                  "
+                + "\n           Q -    Quit                    "
+                + "\n------------------------------------------";
     }
-    
- public void displayHelpMenuView() {
-     
-        System.out.println ("\n" + this.help);
-        
+
+    public void displayHelpMenuView() {
+
+        System.out.println("\n" + this.help);
+
         boolean done = false;
         do {
-            
+
             String menuOption = this.getMenuOption();
-            if (menuOption.toUpperCase().equals ("Q"))
+            if (menuOption.toUpperCase().equals("Q")) {
                 return;
+            }
             done = this.doAction(menuOption);
-           
+
         } while (!done);
     }
- 
+
     private String getMenuOption() {
-        
+
         Scanner keyboard = new Scanner(System.in);
         String value = "";
         boolean valid = false;
-        
-        while (!valid ) {
-            System.out.println ("\nSelect an option");
-            
+
+        while (!valid) {
+            System.out.println("\nSelect an option");
+
             value = keyboard.nextLine();
             value = value.trim();
-            
+
             if (value.length() < 1) {
                 System.out.println("\nInvalid value: value can not be blank");
                 continue;
             }
-            
+
             break;
-            
+
         }
         return value;
-    
+
     }
-    
+
     private boolean doAction(String choice) {
-        
+
         choice = choice.toUpperCase();
-        
-        switch (choice){
+
+        switch (choice) {
             case "S":
                 this.storyLine();
                 break;
@@ -80,15 +82,15 @@ public class HelpMenuView {
             case "M":
                 this.displayMainMenu();
                 break;
-           
+
             default:
                 System.out.println("\n*** Invalid Selection *** Try again, It's not that hard.");
                 break;
-                
+
         }
-            
+
         return true;
-        
+
     }
 
     private void storyLine() {
@@ -108,7 +110,4 @@ public class HelpMenuView {
         mainMenuView.displayMainMenuView();
     }
 
-    
-    
-    
 }

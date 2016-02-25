@@ -12,8 +12,8 @@ import java.util.Objects;
  *
  * @author NicolasWilliams
  */
-public class MainMenu implements Serializable{
-    
+public class MainMenu implements Serializable {
+
     private double activePlayer;
     private String description;
 
@@ -66,7 +66,5 @@ public class MainMenu implements Serializable{
     public String toString() {
         return "MainMenu{" + "activePlayer=" + activePlayer + ", description=" + description + '}';
     }
-    
-    
-    
+
 }
