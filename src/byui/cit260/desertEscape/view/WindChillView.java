@@ -42,7 +42,12 @@ public class WindChillView {
             double temp = this.gettemp();
             System.out.println("\nVelocity: ");
             double velocity = this.getvelocity();
-            done = this.doAction(temp, velocity);
+
+            if (velocity <= 0) {
+                System.out.println("The velocity must be a number greater than 0.");
+            } else {
+                done = this.doAction(temp, velocity);
+            }
         }
         return true;
     }
@@ -66,22 +71,18 @@ public class WindChillView {
     }
 
     private boolean doAction(double temp, double velocity) {
-        boolean done = false;
-        do {
-            System.out.println("\n====================================="
-                    + "\n|   doAction Stub function   |"
-                    + "\n====================================="
-            );
-            return true;
-        } while (!done);
+
+        System.out.println("\n====================================="
+                + "\n|   The Wind Chill Factor is: " + ObjectiveControl.calcWindChill(temp, velocity)
+                + "  |"
+                + "\n====================================="
+        );
+        this.displayNextView();
+        return true;
     }
 
     private void displayNextView() {
-        System.out.println("\n====================================="
-                + "\n|   This is where the output goes   |"
-                + "\n====================================="
-        );
-
+      
         MainMenuView mainMenuView = new MainMenuView();
         mainMenuView.displayMainMenuView();
     }
