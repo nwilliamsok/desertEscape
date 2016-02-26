@@ -98,7 +98,8 @@ public class MainMenuView {
     }
 
     private void startNewGame() {
-        System.out.println("*** startNewGame function called ***");
+        WindChillView windChillView = new WindChillView();
+        windChillView.displayWindChillView();
     }
 
     private void resumeGame() {

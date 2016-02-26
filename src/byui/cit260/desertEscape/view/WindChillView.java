@@ -33,71 +33,47 @@ public class WindChillView {
         );
     }
 
-    public void displayWindChillView() {
+    public boolean displayWindChillView() {
 
         boolean done = false;
-        do {
+        while (!done) {
+            System.out.println("\n" + this.promptMessage + "\n\nTemperature: ");
+
             double temp = this.gettemp();
+            System.out.println("\nVelocity: ");
             double velocity = this.getvelocity();
-
             done = this.doAction(temp, velocity);
-        } while (!done);
-
+        }
+        return true;
     }
 
     private double gettemp() {
         Scanner keyboard = new Scanner(System.in);
-        double value;
-        value = 0;
-        boolean valid = false;
+        double valuetemp;
 
-        while (!valid) {
-            System.out.println("\n" + this.promptMessage);
+        valuetemp = keyboard.nextInt();
 
-            value = keyboard.nextLine();
-            value = value.trim();
-
-            if (value.length() < 1) {
-                System.out.println("\nInvalid value: value can not be blank");
-
-                continue;
-            }
-
-            break;
-
-        }
-        return value;
+        return valuetemp;
     }
 
     private double getvelocity() {
         Scanner keyboard = new Scanner(System.in);
         double valuevelocity;
-        valuevelocity = 0;
-        boolean valid = false;
 
-        while (!valid) {
+        valuevelocity = keyboard.nextInt();
 
-            valuevelocity = keyboard.nextLine();
-            valuevelocity = valuevelocity.trim();
-
-            if (valuevelocity.length() < 1) {
-                System.out.println("\nInvalid value: value can not be blank");
-
-                continue;
-            }
-
-            break;
-
-        }
-        return value;
+        return valuevelocity;
     }
 
     private boolean doAction(double temp, double velocity) {
-
-        ObjectiveControl objectiveControl = new ObjectiveControl();
-        double windChill = objectiveControl.calcWindChill(temp, velocity);
-
-        return true;
+        boolean done = false;
+        do {
+            System.out.println("\n====================================="
+                    + "\n|   doAction Stub function   |"
+                    + "\n====================================="
+            );
+            return true;
+        } while (!done);
     }
 
     private void displayNextView() {
