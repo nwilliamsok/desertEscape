@@ -11,12 +11,10 @@ import java.util.Scanner;
  *
  * @author NicolasWilliams
  */
-public class HelpMenuView {
-
-    private String help;
+public class HelpMenuView extends View {
 
     public HelpMenuView() {
-        this.help = "\n                                          "
+        super("\n                                          "
                 + "\n------------------------------------------"
                 + "\n |             Help Menu                 |"
                 + "\n------------------------------------------"
@@ -25,17 +23,17 @@ public class HelpMenuView {
                 + "\n           A -   About                    "
                 + "\n           M - Main Menu                  "
                 + "\n           Q -    Quit                    "
-                + "\n------------------------------------------";
+                + "\n------------------------------------------");
     }
+    @Override
+    public void display() {
 
-    public void displayHelpMenuView() {
-
-        System.out.println("\n" + this.help);
+        System.out.println("\n" + this.displayMessage);
 
         boolean done = false;
         do {
 
-            String menuOption = this.getMenuOption();
+            String menuOption = this.getInput();
             if (menuOption.toUpperCase().equals("Q")) {
                 return;
             }
@@ -43,8 +41,9 @@ public class HelpMenuView {
 
         } while (!done);
     }
-
-    private String getMenuOption() {
+    
+    @Override
+    public String getInput() {
 
         Scanner keyboard = new Scanner(System.in);
         String value = "";
@@ -67,12 +66,13 @@ public class HelpMenuView {
         return value;
 
     }
+    
+    @Override
+    public boolean doAction(String value) {
 
-    private boolean doAction(String choice) {
+        value = value.toUpperCase();
 
-        choice = choice.toUpperCase();
-
-        switch (choice) {
+        switch (value) {
             case "S":
                 this.storyLine();
                 break;
@@ -80,7 +80,7 @@ public class HelpMenuView {
                 this.about();
                 break;
             case "M":
-                this.displayMainMenu();
+                this.displayMainMenuView();
                 break;
 
             default:
@@ -96,18 +96,18 @@ public class HelpMenuView {
     private void storyLine() {
         System.out.println("\n***Story line goes here ***");
         MainMenuView mainMenuView = new MainMenuView();
-        mainMenuView.displayMainMenuView();
+        mainMenuView.display();
     }
 
     private void about() {
         System.out.println("\n***About section goes here ***");
         MainMenuView mainMenuView = new MainMenuView();
-        mainMenuView.displayMainMenuView();
+        mainMenuView.display();
     }
 
-    private void displayMainMenu() {
+    private void displayMainMenuView() {
         MainMenuView mainMenuView = new MainMenuView();
-        mainMenuView.displayMainMenuView();
+        mainMenuView.display();
     }
 
 }

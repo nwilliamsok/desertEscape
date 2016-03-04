@@ -54,7 +54,7 @@ public class StartProgramView {
 
         boolean done = false;
         do {
-            String playersName = this.getplayersName();
+            String playersName = this.getPlayersName();
             if (playersName.toUpperCase().equals("Q")) {
                 return;
             }
@@ -65,7 +65,7 @@ public class StartProgramView {
 
     }
 
-    private String getplayersName() {
+    private String getPlayersName() {
         Scanner keyboard = new Scanner(System.in);
         String value = "";
         boolean valid = false;
@@ -113,7 +113,7 @@ public class StartProgramView {
         );
 
         MainMenuView mainMenuView = new MainMenuView();
-        mainMenuView.displayMainMenuView();
+        mainMenuView.display();
     }
 
 }

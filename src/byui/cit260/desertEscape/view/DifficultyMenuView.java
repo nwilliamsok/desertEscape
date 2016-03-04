@@ -11,12 +11,10 @@ import java.util.Scanner;
  *
  * @author NicolasWilliams
  */
-public class DifficultyMenuView {
+public class DifficultyMenuView extends View{
 
-    private String diff;
-
-    public DifficultyMenuView() {
-        this.diff = "\n                                          "
+    public DifficultyMenuView(){
+    super("\n                                          "
                 + "\n--------------------------------------------"
                 + "\n|             Difficulty Menu              |"
                 + "\n--------------------------------------------"
@@ -26,16 +24,16 @@ public class DifficultyMenuView {
                 + "\n            R -  Ridiculous                 "
                 + "\n            Q -     Quit                    "
                 + "\n                                            "
-                + "\n--------------------------------------------";
+                + "\n--------------------------------------------");
     }
-
-    public void displayDifficultyMenuView() {
-        System.out.println("\n" + this.diff);
+@Override
+    public void display() {
+        System.out.println("\n" + this.displayMessage);
 
         boolean done = false;
         do {
 
-            String menuOption = this.getMenuOption();
+            String menuOption = this.getInput();
             if (menuOption.toUpperCase().equals("Q")) {
                 return;
             }
@@ -43,8 +41,8 @@ public class DifficultyMenuView {
 
         } while (!done);
     }
-
-    private String getMenuOption() {
+@Override
+    public String getInput() {
 
         Scanner keyboard = new Scanner(System.in);
         String value = "";
@@ -67,12 +65,12 @@ public class DifficultyMenuView {
         return value;
 
     }
+@Override
+    public boolean doAction(String value) {
 
-    private boolean doAction(String choice) {
+        value = value.toUpperCase();
 
-        choice = choice.toUpperCase();
-
-        switch (choice) {
+        switch (value) {
             case "E":
                 this.easy();
                 break;
@@ -94,19 +92,19 @@ public class DifficultyMenuView {
     private void easy() {
         System.out.println("\n*** You have chosen the Easy way out. No cudos for you, buddy. ***");
         OptionsMenuView optionsMenuView = new OptionsMenuView();
-        optionsMenuView.displayOptionsMenuView();
+        optionsMenuView.display();
     }
 
     private void hard() {
         System.out.println("\n*** Obviously this isn't your first Rodeo. ***");
         OptionsMenuView optionsMenuView = new OptionsMenuView();
-        optionsMenuView.displayOptionsMenuView();
+        optionsMenuView.display();
     }
 
     private void ridiculous() {
         System.out.println("\n*** Don't come crying to me when you've pulled all your hairs out. ***");
         OptionsMenuView optionsMenuView = new OptionsMenuView();
-        optionsMenuView.displayOptionsMenuView();
+        optionsMenuView.display();
     }
 
 }

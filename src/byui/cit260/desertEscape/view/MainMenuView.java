@@ -11,12 +11,10 @@ import java.util.Scanner;
  *
  * @author NicolasWilliams
  */
-public class MainMenuView {
-
-    private String menu;
+public class MainMenuView extends View {
 
     public MainMenuView() {
-        this.menu = "\n"
+        super("\n"
                 + "\n---------------------------------------"
                 + "\n|              Main Menu              |"
                 + "\n---------------------------------------"
@@ -27,54 +25,15 @@ public class MainMenuView {
                 + "\n      H -        Help                  "
                 + "\n      Q -        Quit                  "
                 + "\n                                       "
-                + "\n---------------------------------------";
+                + "\n---------------------------------------");
     }
 
-    public void displayMainMenuView() {
+    @Override
+    public boolean doAction(String value) {
 
-        System.out.println("\n" + this.menu);
+        value = value.toUpperCase();
 
-        boolean done = false;
-        do {
-
-            String menuOption = this.getMenuOption();
-            if (menuOption.toUpperCase().equals("Q")) {
-                return;
-            }
-            done = this.doAction(menuOption);
-
-        } while (!done);
-    }
-
-    private String getMenuOption() {
-
-        Scanner keyboard = new Scanner(System.in);
-        String value = "";
-        boolean valid = false;
-
-        while (!valid) {
-            System.out.println("\nSelect an option");
-
-            value = keyboard.nextLine();
-            value = value.trim();
-
-            if (value.length() < 1) {
-                System.out.println("\nInvalid value: value can not be blank");
-                continue;
-            }
-
-            break;
-
-        }
-        return value;
-
-    }
-
-    private boolean doAction(String choice) {
-
-        choice = choice.toUpperCase();
-
-        switch (choice) {
+        switch (value) {
             case "N":
                 this.startNewGame();
                 break;
@@ -108,12 +67,12 @@ public class MainMenuView {
 
     private void displayOptionsMenu() {
         OptionsMenuView optionsMenuView = new OptionsMenuView();
-        optionsMenuView.displayOptionsMenuView();
+        optionsMenuView.display();
     }
 
     private void displayHelpMenu() {
         HelpMenuView helpMenuView = new HelpMenuView();
-        helpMenuView.displayHelpMenuView();
+        helpMenuView.display();
     }
 
 }

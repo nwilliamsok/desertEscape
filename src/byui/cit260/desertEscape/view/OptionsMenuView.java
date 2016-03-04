@@ -11,12 +11,12 @@ import java.util.Scanner;
  *
  * @author NicolasWilliams
  */
-public class OptionsMenuView {
+public class OptionsMenuView extends View {
 
-    private String options;
+    
 
     public OptionsMenuView() {
-        this.options = "\n                                          "
+        super("\n                                          "
                 + "\n------------------------------------------"
                 + "\n|             Options Menu               |"
                 + "\n------------------------------------------"
@@ -26,17 +26,17 @@ public class OptionsMenuView {
                 + "\n           B -    Back                    "
                 + "\n           Q -    Quit                    "
                 + "\n                                          "
-                + "\n------------------------------------------";
+                + "\n------------------------------------------");
     }
+@Override
+    public void display() {
 
-    public void displayOptionsMenuView() {
-
-        System.out.println("\n" + this.options);
+        System.out.println("\n" + this.displayMessage);
 
         boolean done = false;
         do {
 
-            String menuOption = this.getMenuOption();
+            String menuOption = this.getInput();
             if (menuOption.toUpperCase().equals("Q")) {
                 return;
             }
@@ -44,8 +44,8 @@ public class OptionsMenuView {
 
         } while (!done);
     }
-
-    private String getMenuOption() {
+@Override
+    public String getInput() {
 
         Scanner keyboard = new Scanner(System.in);
         String value = "";
@@ -68,16 +68,16 @@ public class OptionsMenuView {
         return value;
 
     }
+@Override
+    public boolean doAction(String value) {
 
-    private boolean doAction(String choice) {
+        value = value.toUpperCase();
 
-        choice = choice.toUpperCase();
-
-        switch (choice) {
+        switch (value) {
             case "D":
                 this.difficulty();
                 break;
-            case "A":
+            case "H":
                 this.displayHelpMenu();
                 break;
             case "B":
@@ -96,17 +96,17 @@ public class OptionsMenuView {
 
     private void difficulty() {
         DifficultyMenuView difficultyMenuView = new DifficultyMenuView();
-        difficultyMenuView.displayDifficultyMenuView();
+        difficultyMenuView.display();
     }
 
     private void displayHelpMenu() {
         HelpMenuView helpMenuView = new HelpMenuView();
-        helpMenuView.displayHelpMenuView();
+        helpMenuView.display();
     }
 
     private void goBack() {
         MainMenuView mainMenuView = new MainMenuView();
-        mainMenuView.displayMainMenuView();
+        mainMenuView.display();
     }
 
 }

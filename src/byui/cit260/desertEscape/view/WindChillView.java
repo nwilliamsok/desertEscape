@@ -77,14 +77,11 @@ public class WindChillView {
                 + "  |"
                 + "\n====================================="
         );
-        this.displayNextView();
+        MainMenuView mainMenuView = new MainMenuView();
+        mainMenuView.display();
         return true;
     }
 
-    private void displayNextView() {
-      
-        MainMenuView mainMenuView = new MainMenuView();
-        mainMenuView.displayMainMenuView();
-    }
+    
 
 }
