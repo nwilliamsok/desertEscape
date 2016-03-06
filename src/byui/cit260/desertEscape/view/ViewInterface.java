@@ -10,9 +10,11 @@ package byui.cit260.desertEscape.view;
  * @author NicolasWilliams
  */
 public interface ViewInterface {
-    
+
     public void display();
+
     public String getInput();
+
     public boolean doAction(String value);
-    
+
 }

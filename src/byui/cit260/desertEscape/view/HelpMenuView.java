@@ -25,6 +25,7 @@ public class HelpMenuView extends View {
                 + "\n           Q -    Quit                    "
                 + "\n------------------------------------------");
     }
+
     @Override
     public void display() {
 
@@ -41,7 +42,7 @@ public class HelpMenuView extends View {
 
         } while (!done);
     }
-    
+
     @Override
     public String getInput() {
 
@@ -66,7 +67,7 @@ public class HelpMenuView extends View {
         return value;
 
     }
-    
+
     @Override
     public boolean doAction(String value) {
 
@@ -93,19 +94,19 @@ public class HelpMenuView extends View {
 
     }
 
-    private void storyLine() {
+    public void storyLine() {
         System.out.println("\n***Story line goes here ***");
         MainMenuView mainMenuView = new MainMenuView();
         mainMenuView.display();
     }
 
-    private void about() {
+    public void about() {
         System.out.println("\n***About section goes here ***");
         MainMenuView mainMenuView = new MainMenuView();
         mainMenuView.display();
     }
 
-    private void displayMainMenuView() {
+    public void displayMainMenuView() {
         MainMenuView mainMenuView = new MainMenuView();
         mainMenuView.display();
     }

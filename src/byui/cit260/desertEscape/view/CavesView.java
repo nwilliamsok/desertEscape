@@ -11,20 +11,20 @@ import java.util.Scanner;
  *
  * @author NicolasWilliams
  */
-public class OptionsMenuView extends View {
+public class CavesView extends View {
 
-    public OptionsMenuView() {
+    public CavesView() {
         super("\n                                          "
-                + "\n------------------------------------------"
-                + "\n|             Options Menu               |"
-                + "\n------------------------------------------"
-                + "\n                                          "
-                + "\n           D - Difficulty                 "
-                + "\n           H -    Help                    "
-                + "\n           B -    Back                    "
-                + "\n           Q -    Quit                    "
-                + "\n                                          "
-                + "\n------------------------------------------");
+                + "\n--------------------------------------------"
+                + "\n|           You Are In The Caves           |"
+                + "\n--------------------------------------------"
+                + "\n                                            "
+                + "\n            R -     Run                     "
+                + "\n            I -    Inspect                  "
+                + "\n            M -   Main Menu                 "
+                + "\n            Q -     Quit                    "
+                + "\n                                            "
+                + "\n--------------------------------------------");
     }
 
     @Override
@@ -75,13 +75,13 @@ public class OptionsMenuView extends View {
         value = value.toUpperCase();
 
         switch (value) {
-            case "D":
-                this.difficulty();
+            case "R":
+                this.run();
                 break;
-            case "H":
-                this.displayHelpMenu();
+            case "I":
+                this.inspect();
                 break;
-            case "B":
+            case "M":
                 this.goBack();
                 break;
 
@@ -95,14 +95,13 @@ public class OptionsMenuView extends View {
 
     }
 
-    private void difficulty() {
-        DifficultyMenuView difficultyMenuView = new DifficultyMenuView();
-        difficultyMenuView.display();
+    private void run() {
+        System.out.println("\n*** Run Function Called ***");
     }
 
-    private void displayHelpMenu() {
-        HelpMenuView helpMenuView = new HelpMenuView();
-        helpMenuView.display();
+    private void inspect() {
+        System.out.println("\n*** Inspect Function Called ***");
+
     }
 
     private void goBack() {

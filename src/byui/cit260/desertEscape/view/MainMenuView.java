@@ -57,8 +57,8 @@ public class MainMenuView extends View {
     }
 
     private void startNewGame() {
-        WindChillView windChillView = new WindChillView();
-        windChillView.displayWindChillView();
+        CavesView cavesView = new CavesView();
+        cavesView.display();
     }
 
     private void resumeGame() {

@@ -53,4 +53,9 @@ public abstract class View implements ViewInterface {
         }
         return value;
     }
+
+    @Override
+    public boolean doAction(String value) {
+        return true;
+    }
 }
