@@ -5,6 +5,8 @@
  */
 package byui.cit260.desertEscape.view;
 
+import byui.cit260.desertEscape.control.GameControl;
+import desertescape.DesertEscape;
 import java.util.Scanner;
 
 /**
@@ -56,9 +58,11 @@ public class MainMenuView extends View {
 
     }
 
-    private void startNewGame() {
-        CavesView cavesView = new CavesView();
-        cavesView.display();
+    public void startNewGame() {
+        
+        GameControl.createNewGame(DesertEscape.getPlayer());
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.display();
     }
 
     private void resumeGame() {

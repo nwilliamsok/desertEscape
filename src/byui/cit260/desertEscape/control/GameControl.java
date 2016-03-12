@@ -5,8 +5,11 @@
  */
 package byui.cit260.desertEscape.control;
 
+import byui.cit260.desertEscape.model.InventoryItem;
 import byui.cit260.desertEscape.model.Player;
 import desertescape.DesertEscape;
+import desertescape.Game;
+import java.util.Map;
 
 /**
  *
@@ -26,5 +29,27 @@ public class GameControl {
 
         return player;
     }
+
+    public static void createNewGame(Player player) {
+        
+        Game game = new Game();
+        DesertEscape.setCurrentGame(game);
+        
+        game.setPlayer(player);
+        
+        InventoryItem[] inventoryList = GameControl.createInventoryList();
+        game.setInventory(inventoryList);
+        
+        Map Map = MapControl.createMap();
+        game.setMap(map);
+        
+        MapControl.moveCharactersToStartingLocation(map);
+    }
+
+    public static InventoryItem[] createInventoryList() {
+InventoryItem[] inventory = new InventoryItem[7];
+        return inventory;
+    }
+
 
 }

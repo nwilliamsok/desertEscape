@@ -5,10 +5,28 @@
  */
 package byui.cit260.desertEscape.control;
 
+import byui.cit260.desertEscape.model.Scene;
+import java.util.Map;
+
 /**
  *
  * @author NicolasWilliams
  */
 public class MapControl {
+
+    static MapControl createMap() {
+Map map = new Map(20,20);
+
+Scene[] scenes = createScenes();
+
+GameControl.assignScenesToLocations(map, scenes);
+
+return map;
+    }
+    
+    static MapControl moveCharactersToStartingLocation() {
+        System.out.println("moveCharactersToStartingLocation function called");
+        return null;
+    }
     
 }

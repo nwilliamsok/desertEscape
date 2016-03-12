@@ -7,7 +7,7 @@ package desertescape;
 
 import byui.cit260.desertEscape.model.Caves;
 import byui.cit260.desertEscape.model.Desert;
-import byui.cit260.desertEscape.model.Inventory;
+import byui.cit260.desertEscape.model.InventoryItem;
 import byui.cit260.desertEscape.model.Options;
 import byui.cit260.desertEscape.model.Player;
 import byui.cit260.desertEscape.model.Pyramid;
@@ -33,7 +33,6 @@ public class DesertEscape {
 
         Caves cavesOne = new Caves();
         Desert desertOne = new Desert();
-        Inventory inventoryOne = new Inventory();
         Options optionsOne = new Options();
         Player playerOne = new Player();
         Pyramid pyramidOne = new Pyramid();
