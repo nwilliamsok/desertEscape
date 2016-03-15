@@ -29,10 +29,6 @@ public class Game implements Serializable {
     public Game() {
     }
 
-    public double getTotalTime() {
-        return totalTime;
-    }
-
     public Character[] getCharacter() {
         return character;
     }

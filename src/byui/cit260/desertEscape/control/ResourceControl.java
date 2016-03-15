@@ -5,10 +5,12 @@
  */
 package byui.cit260.desertEscape.control;
 
+import java.io.Serializable;
+
 /**
  *
  * @author NicolasWilliams
  */
-public class ResourceControl {   
+public class ResourceControl implements Serializable{   
     
 }

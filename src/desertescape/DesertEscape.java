@@ -7,7 +7,6 @@ package desertescape;
 
 import byui.cit260.desertEscape.model.Caves;
 import byui.cit260.desertEscape.model.Desert;
-import byui.cit260.desertEscape.model.InventoryItem;
 import byui.cit260.desertEscape.model.Options;
 import byui.cit260.desertEscape.model.Player;
 import byui.cit260.desertEscape.model.Pyramid;
@@ -23,8 +22,8 @@ public class DesertEscape {
     /**
      * @param args the command line arguments
      */
-    private static Game currentGame = null;
-    private static Player player = null;
+    private static Game game;
+    private static Player player;
 
     public static void main(String[] args) {
 
@@ -87,12 +86,12 @@ public class DesertEscape {
         System.out.println(mainMenuInfo);
     }
 
-    public static Game getCurrentGame() {
-        return currentGame;
+    public static Game getGame() {
+        return game;
     }
 
-    public static void setCurrentGame(Game currentGame) {
-        DesertEscape.currentGame = currentGame;
+    public static void setGame(Game game) {
+        DesertEscape.game = game;
     }
 
     public static Player getPlayer() {

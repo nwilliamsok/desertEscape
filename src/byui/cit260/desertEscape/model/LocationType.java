@@ -3,14 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package byui.cit260.desertEscape.control;
-
-import java.io.Serializable;
+package byui.cit260.desertEscape.model;
 
 /**
  *
  * @author NicolasWilliams
  */
-public class InventoryControl implements Serializable{
+public enum LocationType {
+    
+    Desert,
+    Pyramid,
+    Mountains,
+    AlienCamp,
+    Caves,
+    Cliffs
+    
     
 }

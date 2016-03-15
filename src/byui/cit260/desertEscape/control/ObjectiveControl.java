@@ -5,11 +5,13 @@
  */
 package byui.cit260.desertEscape.control;
 
+import java.io.Serializable;
+
 /**
  *
  * @author NicolasWilliams
  */
-public class ObjectiveControl {
+public class ObjectiveControl implements Serializable{
 
     public static double calcVolumeOfPit(double height, double width, double length) {
 

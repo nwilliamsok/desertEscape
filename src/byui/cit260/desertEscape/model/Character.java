@@ -5,48 +5,35 @@
  */
 package byui.cit260.desertEscape.model;
 
-import java.awt.Point;
 import java.io.Serializable;
-import java.util.Objects;
 
 /**
  *
  * @author NicolasWilliams
  */
-public enum Character implements Serializable {
+public class Character implements Serializable {
 
-    
-    Joe("He is strong."),
-    Matt("He is brave."),
-    Ben("He is smart."),
-    John("He is quick."),
-    Tom("He is just an example and will be deleted from the game before the final release."),
-    Samantha("She is a woman."),
-    Gary("He is also a woman."),
-    Player1("Player1 is not even a real person and did not even deserve a name."),
-    ThePlayerFormerlyKnownAsMousecop("University of Missouri, Columbia.");
-    
-    
-    private final String description;
-    private final Point coordinates;
+    private String name;
+    private String description;
 
-    private Character(String description) {
-        this.description = description;
-        coordinates = new Point(1,1);
-        
+    public Character() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public Point getCoordinates() {
-        return coordinates;
+    public void setDescription(String description) {
+        this.description = description;
     }
-
-    @Override
-    public String toString() {
-        return "Character{" + "description=" + description + ", coordinates=" + coordinates + '}';
-    }
-
+    
+    
 }

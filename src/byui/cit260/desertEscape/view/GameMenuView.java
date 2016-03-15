@@ -5,6 +5,7 @@
  */
 package byui.cit260.desertEscape.view;
 
+import desertescape.DesertEscape;
 import java.util.Scanner;
 
 /**
@@ -22,6 +23,7 @@ public class GameMenuView extends View {
                 + "\n           S - Storyline                  "
                 + "\n           A -   About                    "
                 + "\n           M - Main Menu                  "
+                + "\n           V - View Map                   "
                 + "\n           Q -    Quit                    "
                 + "\n------------------------------------------");
     }
@@ -83,6 +85,9 @@ public class GameMenuView extends View {
             case "M":
                 this.displayMainMenuView();
                 break;
+                case "V":
+                viewMap();
+                break;
 
             default:
                 System.out.println("\n*** Invalid Selection *** Try again, It's not that hard.");
@@ -109,6 +114,10 @@ public class GameMenuView extends View {
     public void displayMainMenuView() {
         MainMenuView mainMenuView = new MainMenuView();
         mainMenuView.display();
+    }
+
+    private void viewMap() {
+    System.out.println(DesertEscape.getGame().getMap().getMapString());
     }
 
 }

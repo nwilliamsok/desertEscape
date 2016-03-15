@@ -13,33 +13,62 @@ import java.io.Serializable;
  */
 public class Map implements Serializable {
 
-    private int noOfRows;
-    private int noOfColumns;
-    private Location[][] locations;
+    public static final int NUM_ROWS;
+    public static final int NUM_COLS;
+
+    private Location[][] matrix;
 
     public Map() {
+        matrix = new Location[NUM_ROWS][NUM_COLS];
+        init();
     }
 
-    public Map(int noOfRows, int noOfColumns) {
-        if (noOfRows < 1 || noOfColumns <) {
-            System.out.println("The number of rows and columns must be > zero");
-            return;
-        }
+    public void init() {
+        for (int row = 0; row < NUM_ROWS; row++) {
+            for (int col = 0; row < NUM_COLS; col++) {
+                Location loc = new Location();
+                loc.setType(LocationType.values()[(int) (Math.random() * LocationType.values().length)]);
 
-        this.noOfRows = noOfRows;
-        this.noOfColumns = noOfColumns;
+                matrix[row][col] = loc;
+            }
 
-        this.locations = new Location[noOfRows][noOfColumns];
-
-        for (int row = 0; row < noOfRows; row++) {
-
-            Location location = new Location();
-            location.setColumn(column);
-            location.setRow(Row);
-            location.setVisited(false);
-
-            locations[row][column] = location;
+            this.matrix = new Location[NUM_ROWS][NUM_COLS];
         }
 
     }
+
+    public String getMapString() {
+
+        String rtn = "";
+        for (int row = 0; row < NUM_ROWS; row++) {
+            for (int col = 0; row < NUM_COLS; col++) {
+                rtn += matrix[row][col].getType().name().charAt(0) + "\t";
+            }
+            rtn += "\t";
+        }
+        return rtn;
+    }
+
+    public static int getNUM_ROWS() {
+        return NUM_ROWS;
+    }
+
+    public static int getNUM_COLS() {
+        return NUM_COLS;
+    }
+
+    public Location[][] getMatrix() {
+        return matrix;
+    }
+
+    public void setMatrix(Location[][] matrix) {
+        this.matrix = matrix;
+    }
+
+    public Location getLocation(int row, int col)
+
+    {
+        return matrix[row][col];
+    }
+
 }

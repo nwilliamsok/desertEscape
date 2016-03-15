@@ -6,7 +6,6 @@
 package byui.cit260.desertEscape.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 /**
  *
@@ -14,10 +13,50 @@ import java.util.ArrayList;
  */
 public class Location implements Serializable{
     
-    private int row;
-    private int column;
-    private boolean visited;
-    private Scene scene;
-    private ArrayList<Character> characters;
+    private LocationType type;
+    private String description;
+    private InventoryItem inventoryItem;
+    private Character character;
+
+    public Location() {
+    }
+
+    public LocationType getType() {
+        return type;
+    }
+
+    public void setType(LocationType type) {
+        this.type = type;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public InventoryItem getInventoryItem() {
+        return inventoryItem;
+    }
+
+    public void setInventoryItem(InventoryItem inventoryItem) {
+        this.inventoryItem = inventoryItem;
+    }
+
+    public Character getCharacter() {
+        return character;
+    }
+
+    public void setCharacter(Character character) {
+        this.character = character;
+    }
+
+   
+
+    
+    
+    
     
 }

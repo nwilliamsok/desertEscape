@@ -6,13 +6,14 @@
 package byui.cit260.desertEscape.control;
 
 import byui.cit260.desertEscape.model.Scene;
+import java.io.Serializable;
 import java.util.Map;
 
 /**
  *
  * @author NicolasWilliams
  */
-public class MapControl {
+public class MapControl implements Serializable{
 
     static MapControl createMap() {
 Map map = new Map(20,20);
