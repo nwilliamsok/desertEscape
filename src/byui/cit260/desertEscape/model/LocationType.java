@@ -11,12 +11,12 @@ package byui.cit260.desertEscape.model;
  */
 public enum LocationType {
     
-    Desert,
-    Pyramid,
+    Desert___,
+    Pyramid__,
     Mountains,
     AlienCamp,
-    Caves,
-    Cliffs
+    Caves____,
+    Cliffs___
     
     
 }
