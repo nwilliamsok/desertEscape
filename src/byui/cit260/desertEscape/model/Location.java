@@ -16,11 +16,29 @@ public class Location implements Serializable{
     private LocationType type;
     private String description;
     private InventoryItem inventoryItem;
-    private Character character;
+    private Survivor survivor;
+    private int row;
+    private int col;
 
     public Location() {
     }
 
+    public int getRow() {
+        return row;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public int getCol() {
+        return col;
+    }
+
+    public void setCol(int col) {
+        this.col = col;
+    }
+   
     public LocationType getType() {
         return type;
     }
@@ -45,12 +63,12 @@ public class Location implements Serializable{
         this.inventoryItem = inventoryItem;
     }
 
-    public Character getCharacter() {
-        return character;
+    public Survivor getSurvivor() {
+        return survivor;
     }
 
-    public void setCharacter(Character character) {
-        this.character = character;
+    public void setSurvivor(Survivor survivor) {
+        this.survivor = survivor;
     }
 
    

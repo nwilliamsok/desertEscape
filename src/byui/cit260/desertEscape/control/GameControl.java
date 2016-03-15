@@ -5,14 +5,14 @@
  */
 package byui.cit260.desertEscape.control;
 
-import byui.cit260.desertEscape.model.InventoryItem;
+import byui.cit260.desertEscape.model.Planet;
 import byui.cit260.desertEscape.model.Player;
+import byui.cit260.desertEscape.model.Survivor;
 import desertescape.DesertEscape;
 import desertescape.Game;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  *
@@ -34,87 +34,95 @@ public class GameControl implements Serializable {
     }
 
     public static void createNewGame(Player player) {
-
+        
         Game g = new Game();
         g.setPlayer(player);
-
-        Map gameMap = new Map();
-        g.setMap(gameMap);
-
-        setCharacterLocations(gameMap);
-
-        Player.setLocation(gameMap.getLocation(0, 0));
+        
+        Planet gamePlanet = new Planet();
+        g.setPlanet(gamePlanet);
+        
+        setSurvivorLocations(gamePlanet);
+        
+        player.setLocation(gamePlanet.getLocation(0, 0));
+        
         DesertEscape.setGame(g);
     }
+    
+    
 
-    public static List<Character> createCharacterList() {
-        List<Character> characterList = new ArrayList<>();
+    public static List<Survivor> createSurvivorList() {
+        List<Survivor> survivorList = new ArrayList<>();
 
-        Character Joe = new Character();
+        Survivor Joe = new Survivor();
         Joe.setName("Joe");
         Joe.setDescription("He is strong.");
-        characterList.add(Joe);
+        survivorList.add(Joe);
 
-        Character Matt = new Character();
+        Survivor Matt = new Survivor();
         Matt.setName("Matt");
         Matt.setDescription("He is brave.");
-        characterList.add(Matt);
+        survivorList.add(Matt);
 
-        Character Ben = new Character();
+        Survivor Ben = new Survivor();
         Ben.setName("Ben");
         Ben.setDescription("He is smart.");
-        characterList.add(Ben);
+        survivorList.add(Ben);
 
-        Character John = new Character();
+        Survivor John = new Survivor();
         John.setName("John");
         John.setDescription("He is quick.");
-        characterList.add(John);
+        survivorList.add(John);
 
-        Character Tom = new Character();
+        Survivor Tom = new Survivor();
         Tom.setName("Tom");
         Tom.setDescription("He was just an example and was meant to be deleted from the game before the final release.");
-        characterList.add(Tom);
+        survivorList.add(Tom);
 
-        Character Samantha = new Character();
+        Survivor Samantha = new Survivor();
         Samantha.setName("Samantha");
         Samantha.setDescription("She is a woman.");
-        characterList.add(Samantha);
+        survivorList.add(Samantha);
 
-        Character Gary = new Character();
+        Survivor Gary = new Survivor();
         Gary.setName("Gary");
         Gary.setDescription("He is also a woman...");
-        characterList.add(Gary);
+        survivorList.add(Gary);
 
-        Character Player1 = new Character();
+        Survivor Player1 = new Survivor();
         Player1.setName("Player1");
         Player1.setDescription("Player1 is not even a real person and did not even deserve a name.");
-        characterList.add(Player1);
+        survivorList.add(Player1);
 
-        Character ThePlayerFormerlyKnownAsMousecop = new Character();
+        Survivor ThePlayerFormerlyKnownAsMousecop = new Survivor();
         ThePlayerFormerlyKnownAsMousecop.setName("ThePlayerFormerlyKnownAsMousecop");
         ThePlayerFormerlyKnownAsMousecop.setDescription("University of Missouri, Columbia.");
-        characterList.add(ThePlayerFormerlyKnownAsMousecop);
+        survivorList.add(ThePlayerFormerlyKnownAsMousecop);
 
-        return characterList;
+        return survivorList;
     }
 
-    public static void setCharacterLocations(Map gameMap) {
-        List<Character> characters = createCharacterList();
+    public static void setSurvivorLocations(Planet planet) {
+        
+        List<Survivor> heroes = createSurvivorList();
         boolean success = false;
-
-        for (Character c : characters) {
+        
+        for(Survivor s : heroes) {
+            
             do {
-                int row = (int) (Math.random() * Map.NUM_ROWS);
-                int col = (int) (Math.random() * Map.NUM_COLS);
-
-                success = false;
-                if (map.getLocation(row, col).getCharacter == null) {
-                    map.getLocation(row, col).setCharacter(c);
+                int row = (int)(Math.random() * Planet.NUM_ROWS);
+                int col = (int)(Math.random() * Planet.NUM_COLS);
+            
+                 success = false;
+                
+                if(planet.getLocation(row, col).getSurvivor() == null) {
+                    planet.getLocation(row, col).setSurvivor(s);
                     success = true;
                 }
-
-            } while (success == false);
+                
+            } while(success == false);
+            
         }
+        
     }
 
 }

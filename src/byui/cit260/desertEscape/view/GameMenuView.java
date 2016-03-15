@@ -5,6 +5,7 @@
  */
 package byui.cit260.desertEscape.view;
 
+import byui.cit260.desertEscape.control.PlanetControl;
 import desertescape.DesertEscape;
 import java.util.Scanner;
 
@@ -21,10 +22,16 @@ public class GameMenuView extends View {
                 + "\n------------------------------------------"
                 + "\n                                          "
                 + "\n           S - Storyline                  "
-                + "\n           A -   About                    "
+                + "\n           A - About                      "
                 + "\n           M - Main Menu                  "
-                + "\n           V - View Map                   "
-                + "\n           Q -    Quit                    "
+                + "\n           V - View Planet                "
+                + "\n                                          "
+                + "\n           U - Move Up                    "
+                + "\n           D - Move Down                  "
+                + "\n           L - Move Left                  "
+                + "\n           R - Move Right                 "
+                + "\n                                          "
+                + "\n           Q - Quit                       "
                 + "\n------------------------------------------");
     }
 
@@ -85,10 +92,21 @@ public class GameMenuView extends View {
             case "M":
                 this.displayMainMenuView();
                 break;
-                case "V":
-                viewMap();
+            case "V":
+                viewPlanet();
                 break;
-
+            case "U":
+                up();
+                break;
+            case "D":
+                down();
+                break;
+            case "L":
+                left();
+                break;
+            case "R":
+                right();
+                break;
             default:
                 System.out.println("\n*** Invalid Selection *** Try again, It's not that hard.");
                 break;
@@ -116,8 +134,33 @@ public class GameMenuView extends View {
         mainMenuView.display();
     }
 
-    private void viewMap() {
-    System.out.println(DesertEscape.getGame().getMap().getMapString());
+  private void viewPlanet() {
+        System.out.println(DesertEscape.getGame().getPlanet().getPlanetString());
     }
+
+    private void up() {
+        PlanetControl pc = new PlanetControl();
+        if (pc.up(DesertEscape.getGame()) == false) {
+        System.out.println("You cannot move there");
+    }
+    }
+
+    private void down() {
+PlanetControl pc = new PlanetControl();
+        if (pc.down(DesertEscape.getGame()) == false) {
+        System.out.println("You cannot move there");
+    }    }
+
+    private void left() {
+PlanetControl pc = new PlanetControl();
+        if (pc.left(DesertEscape.getGame()) == false) {
+        System.out.println("You cannot move there");
+    }    }
+
+    private void right() {
+PlanetControl pc = new PlanetControl();
+        if (pc.right(DesertEscape.getGame()) == false) {
+        System.out.println("You cannot move there");
+    }    }
 
 }

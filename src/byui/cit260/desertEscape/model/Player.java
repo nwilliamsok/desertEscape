@@ -6,6 +6,8 @@
 package byui.cit260.desertEscape.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -15,10 +17,11 @@ import java.util.Objects;
 public class Player implements Serializable {
 
     private String name;
-    private String gender;
-    private double bestTime;
+    Location location;
+    List<InventoryItem> inventory;
 
-    public Player() {
+   public Player() {
+        inventory = new ArrayList<>();
     }
 
     public String getName() {
@@ -29,28 +32,28 @@ public class Player implements Serializable {
         this.name = name;
     }
 
-    public String getGender() {
-        return gender;
+    public Location getLocation() {
+        return location;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
-    public double getBestTime() {
-        return bestTime;
+    public List<InventoryItem> getInventory() {
+        return inventory;
     }
 
-    public void setBestTime(double bestTime) {
-        this.bestTime = bestTime;
+    public void setInventory(List<InventoryItem> inventory) {
+        this.inventory = inventory;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 11 * hash + Objects.hashCode(this.name);
-        hash = 11 * hash + Objects.hashCode(this.gender);
-        hash = 11 * hash + (int) (Double.doubleToLongBits(this.bestTime) ^ (Double.doubleToLongBits(this.bestTime) >>> 32));
+        int hash = 7;
+        hash = 31 * hash + Objects.hashCode(this.name);
+        hash = 31 * hash + Objects.hashCode(this.location);
+        hash = 31 * hash + Objects.hashCode(this.inventory);
         return hash;
     }
 
@@ -66,10 +69,10 @@ public class Player implements Serializable {
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }
-        if (!Objects.equals(this.gender, other.gender)) {
+        if (!Objects.equals(this.location, other.location)) {
             return false;
         }
-        if (Double.doubleToLongBits(this.bestTime) != Double.doubleToLongBits(other.bestTime)) {
+        if (!Objects.equals(this.inventory, other.inventory)) {
             return false;
         }
         return true;
@@ -77,7 +80,10 @@ public class Player implements Serializable {
 
     @Override
     public String toString() {
-        return "Player{" + "name=" + name + ", gender=" + gender + ", bestTime=" + bestTime + '}';
+        return "Player{" + "name=" + name + ", location=" + location + ", inventory=" + inventory + '}';
     }
+
+ 
+
 
 }

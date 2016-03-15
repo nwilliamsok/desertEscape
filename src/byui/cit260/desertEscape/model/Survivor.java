@@ -11,12 +11,12 @@ import java.io.Serializable;
  *
  * @author NicolasWilliams
  */
-public class Character implements Serializable {
+public class Survivor implements Serializable {
 
     private String name;
     private String description;
 
-    public Character() {
+    public Survivor() {
     }
 
     public String getName() {
