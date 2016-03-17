@@ -54,6 +54,25 @@ public class Planet implements Serializable{
 
         return rtn;
     }
+    
+    public String getPlanetString(Location currentLocation) {
+
+        String rtn = "";
+
+        for (int row = 0; row < NUM_ROWS; row++) {
+            for (int col = 0; col < NUM_COLS; col++) {
+                rtn += matrix[row][col].getType().name();
+                if(matrix[row][col] == currentLocation) {
+                    rtn += "*";
+                }
+                
+                rtn += "\t";
+            }
+            rtn += "\n\n";
+        }
+
+        return rtn;
+    }
 
     public Location getLocation(int row, int col) {
         return matrix[row][col];

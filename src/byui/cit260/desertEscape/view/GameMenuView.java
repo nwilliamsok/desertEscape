@@ -6,8 +6,9 @@
 package byui.cit260.desertEscape.view;
 
 import byui.cit260.desertEscape.control.PlanetControl;
+import byui.cit260.desertEscape.model.Location;
+import byui.cit260.desertEscape.model.LocationType;
 import desertescape.DesertEscape;
-import java.util.Scanner;
 
 /**
  *
@@ -36,48 +37,6 @@ public class GameMenuView extends View {
     }
 
     @Override
-    public void display() {
-
-        System.out.println("\n" + this.displayMessage);
-
-        boolean done = false;
-        do {
-
-            String menuOption = this.getInput();
-            if (menuOption.toUpperCase().equals("Q")) {
-                return;
-            }
-            done = this.doAction(menuOption);
-
-        } while (!done);
-    }
-
-    @Override
-    public String getInput() {
-
-        Scanner keyboard = new Scanner(System.in);
-        String value = "";
-        boolean valid = false;
-
-        while (!valid) {
-            System.out.println("\nSelect an option");
-
-            value = keyboard.nextLine();
-            value = value.trim();
-
-            if (value.length() < 1) {
-                System.out.println("\nInvalid value: value can not be blank");
-                continue;
-            }
-
-            break;
-
-        }
-        return value;
-
-    }
-
-    @Override
     public boolean doAction(String value) {
 
         value = value.toUpperCase();
@@ -90,8 +49,7 @@ public class GameMenuView extends View {
                 this.about();
                 break;
             case "M":
-                this.displayMainMenuView();
-                break;
+                return true;
             case "V":
                 viewPlanet();
                 break;
@@ -107,60 +65,82 @@ public class GameMenuView extends View {
             case "R":
                 right();
                 break;
+            case "Q":
+                return true;
             default:
                 System.out.println("\n*** Invalid Selection *** Try again, It's not that hard.");
                 break;
 
         }
 
-        return true;
+        return false;
 
     }
 
     public void storyLine() {
         System.out.println("\n***Story line goes here ***");
-        MainMenuView mainMenuView = new MainMenuView();
-        mainMenuView.display();
     }
 
     public void about() {
         System.out.println("\n***About section goes here ***");
-        MainMenuView mainMenuView = new MainMenuView();
-        mainMenuView.display();
     }
 
-    public void displayMainMenuView() {
-        MainMenuView mainMenuView = new MainMenuView();
-        mainMenuView.display();
-    }
-
-  private void viewPlanet() {
-        System.out.println(DesertEscape.getGame().getPlanet().getPlanetString());
+    private void viewPlanet() {
+        Location curLoc = DesertEscape.getPlayer().getLocation();
+        System.out.println(DesertEscape.getGame().getPlanet().getPlanetString(curLoc));
     }
 
     private void up() {
         PlanetControl pc = new PlanetControl();
         if (pc.up(DesertEscape.getGame()) == false) {
-        System.out.println("You cannot move there");
-    }
+            System.out.println("You cannot move there");
+        } else {
+            doCondition(DesertEscape.getPlayer().getLocation());
+        }
     }
 
     private void down() {
-PlanetControl pc = new PlanetControl();
+        PlanetControl pc = new PlanetControl();
         if (pc.down(DesertEscape.getGame()) == false) {
-        System.out.println("You cannot move there");
-    }    }
+            System.out.println("You cannot move there");
+        } else {
+            doCondition(DesertEscape.getPlayer().getLocation());
+        }
+    }
 
     private void left() {
-PlanetControl pc = new PlanetControl();
+        PlanetControl pc = new PlanetControl();
         if (pc.left(DesertEscape.getGame()) == false) {
-        System.out.println("You cannot move there");
-    }    }
+            System.out.println("You cannot move there");
+        } else {
+            doCondition(DesertEscape.getPlayer().getLocation());
+        }
+    }
 
     private void right() {
-PlanetControl pc = new PlanetControl();
+        PlanetControl pc = new PlanetControl();
         if (pc.right(DesertEscape.getGame()) == false) {
-        System.out.println("You cannot move there");
-    }    }
+            System.out.println("You cannot move there");
+        } else {
+            doCondition(DesertEscape.getPlayer().getLocation());
+        }
+    }
 
+    private void doCondition(Location newLocation) {
+        
+        //Challenges 
+        if(newLocation.getType() == LocationType.AlienCamp) {
+            
+        } else if (newLocation.getType() == LocationType.Desert___) {
+            WindChillView wcv = new WindChillView();
+            wcv.displayWindChillView();
+        }
+        
+        //Survivors
+        if(newLocation.getSurvivor() != null) {
+            System.out.println("You ran into: " + newLocation.getSurvivor().getName() + "\n" + newLocation.getSurvivor().getDescription());
+        }
+        
+    }
+    
 }

@@ -7,7 +7,6 @@ package byui.cit260.desertEscape.view;
 
 import byui.cit260.desertEscape.control.GameControl;
 import desertescape.DesertEscape;
-import java.util.Scanner;
 
 /**
  *
@@ -48,13 +47,15 @@ public class MainMenuView extends View {
             case "H":
                 this.displayHelpMenu();
                 break;
+            case "Q":
+                return false;
             default:
                 System.out.println("\n*** Invalid Selection *** Try again, It's not that hard.");
                 break;
 
         }
 
-        return true;
+        return false;
 
     }
 
