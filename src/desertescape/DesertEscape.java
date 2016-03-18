@@ -23,7 +23,12 @@ public class DesertEscape {
     public static void main(String[] args) {
 
         StartProgramView startProgramView = new StartProgramView();
+        try {
         startProgramView.displayStartProgramView();
+        } catch(Throwable te) {
+            System.out.println(te.getMessage());
+            startProgramView.displayStartProgramView();
+        }
     }
 
      public static Player getPlayer() {

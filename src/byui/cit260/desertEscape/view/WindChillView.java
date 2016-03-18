@@ -6,6 +6,7 @@
 package byui.cit260.desertEscape.view;
 
 import byui.cit260.desertEscape.control.ObjectiveControl;
+import exceptions.GameException;
 import java.util.Scanner;
 
 /**
@@ -33,7 +34,7 @@ public class WindChillView {
         );
     }
 
-    public boolean displayWindChillView() {
+    public boolean displayWindChillView() throws GameException {
 
         boolean done = false;
         while (!done) {
@@ -56,7 +57,7 @@ public class WindChillView {
         Scanner keyboard = new Scanner(System.in);
         double valuetemp;
 
-        valuetemp = keyboard.nextInt();
+        valuetemp = getDoubleFromKeyboard();
 
         return valuetemp;
     }
@@ -65,12 +66,12 @@ public class WindChillView {
         Scanner keyboard = new Scanner(System.in);
         double valuevelocity;
 
-        valuevelocity = keyboard.nextInt();
+        valuevelocity = getDoubleFromKeyboard();
 
         return valuevelocity;
     }
 
-    private boolean doAction(double temp, double velocity) {
+    private boolean doAction(double temp, double velocity) throws GameException {
 
         System.out.println("\n====================================="
                 + "\n|   The Wind Chill Factor is: " + ObjectiveControl.calcWindChill(temp, velocity)
@@ -80,4 +81,20 @@ public class WindChillView {
         return true;
     }
 
+      public double getDoubleFromKeyboard() {
+        Scanner keyboard = new Scanner(System.in);
+        boolean valid = false;
+
+        while (!valid) {
+            String input = keyboard.nextLine();
+            try {
+                double num = Double.parseDouble(input);
+                return num;
+            } catch (Exception e) {
+                System.out.println("Please enter a number.");
+            }
+        }
+
+        return 0;
+    }
 }

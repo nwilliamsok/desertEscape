@@ -9,6 +9,9 @@ import byui.cit260.desertEscape.control.PlanetControl;
 import byui.cit260.desertEscape.model.Location;
 import byui.cit260.desertEscape.model.LocationType;
 import desertescape.DesertEscape;
+import exceptions.GameException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -26,6 +29,7 @@ public class GameMenuView extends View {
                 + "\n           A - About                      "
                 + "\n           M - Main Menu                  "
                 + "\n           V - View Planet                "
+                + "\n           C - Collect Resource           "
                 + "\n                                          "
                 + "\n           U - Move Up                    "
                 + "\n           D - Move Down                  "
@@ -39,40 +43,47 @@ public class GameMenuView extends View {
     @Override
     public boolean doAction(String value) {
 
-        value = value.toUpperCase();
+        try {
+            value = value.toUpperCase();
 
-        switch (value) {
-            case "S":
-                this.storyLine();
-                break;
-            case "A":
-                this.about();
-                break;
-            case "M":
-                return true;
-            case "V":
-                viewPlanet();
-                break;
-            case "U":
-                up();
-                break;
-            case "D":
-                down();
-                break;
-            case "L":
-                left();
-                break;
-            case "R":
-                right();
-                break;
-            case "Q":
-                return true;
-            default:
-                System.out.println("\n*** Invalid Selection *** Try again, It's not that hard.");
-                break;
+            switch (value) {
+                case "S":
+                    this.storyLine();
+                    break;
+                case "A":
+                    this.about();
+                    break;
+                case "M":
+                    return true;
+                case "V":
+                    viewPlanet();
+                    break;
+                case "C":
+                    collectResource();
+                case "U":
+                    up();
+                    break;
+                case "D":
+                    down();
+                    break;
+                case "L":
+                    left();
+                    break;
+                case "R":
+                    right();
+                    break;
+                case "Q":
+                    return true;
+                default:
+                    System.out.println("\n*** Invalid Selection *** Try again, It's not that hard.");
+                    break;
 
+            }
+
+            return false;
+        } catch (GameException ex) {
+            System.out.println("Unknown Error");
         }
-
         return false;
 
     }
@@ -90,7 +101,7 @@ public class GameMenuView extends View {
         System.out.println(DesertEscape.getGame().getPlanet().getPlanetString(curLoc));
     }
 
-    private void up() {
+    private void up() throws GameException {
         PlanetControl pc = new PlanetControl();
         if (pc.up(DesertEscape.getGame()) == false) {
             System.out.println("You cannot move there");
@@ -99,7 +110,7 @@ public class GameMenuView extends View {
         }
     }
 
-    private void down() {
+    private void down() throws GameException {
         PlanetControl pc = new PlanetControl();
         if (pc.down(DesertEscape.getGame()) == false) {
             System.out.println("You cannot move there");
@@ -108,7 +119,7 @@ public class GameMenuView extends View {
         }
     }
 
-    private void left() {
+    private void left() throws GameException {
         PlanetControl pc = new PlanetControl();
         if (pc.left(DesertEscape.getGame()) == false) {
             System.out.println("You cannot move there");
@@ -117,7 +128,7 @@ public class GameMenuView extends View {
         }
     }
 
-    private void right() {
+    private void right() throws GameException {
         PlanetControl pc = new PlanetControl();
         if (pc.right(DesertEscape.getGame()) == false) {
             System.out.println("You cannot move there");
@@ -126,21 +137,29 @@ public class GameMenuView extends View {
         }
     }
 
-    private void doCondition(Location newLocation) {
-        
+    private void doCondition(Location newLocation) throws GameException {
+
         //Challenges 
-        if(newLocation.getType() == LocationType.AlienCamp) {
-            
+        if (newLocation.getType() == LocationType.AlienCamp) {
+            BuildTimeMachineView tmv = new BuildTimeMachineView();
+            tmv.displayBuildTimeMachineView();
         } else if (newLocation.getType() == LocationType.Desert___) {
             WindChillView wcv = new WindChillView();
             wcv.displayWindChillView();
+        } else if (newLocation.getType() == LocationType.Caves____) {
+            FillPitView fpv = new FillPitView();
+            fpv.displayFillPitView();
         }
-        
+
         //Survivors
-        if(newLocation.getSurvivor() != null) {
+        if (newLocation.getSurvivor() != null) {
             System.out.println("You ran into: " + newLocation.getSurvivor().getName() + "\n" + newLocation.getSurvivor().getDescription());
         }
-        
+
     }
-    
+
+    private void collectResource() {
+System.out.println("Not implemented yet");
+    }
+
 }
