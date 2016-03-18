@@ -27,6 +27,7 @@ public class DesertEscape {
         startProgramView.displayStartProgramView();
         } catch(Throwable te) {
             System.out.println(te.getMessage());
+            te.printStackTrace();
             startProgramView.displayStartProgramView();
         }
     }
