@@ -103,10 +103,10 @@ public class GameControl implements Serializable {
 
     public static void setSurvivorLocations(Planet planet) {
         
-        List<Survivor> heroes = createSurvivorList();
+        List<Survivor> survivor = createSurvivorList();
         boolean success = false;
         
-        for(Survivor s : heroes) {
+        for(Survivor s : survivor) {
             
             do {
                 int row = (int)(Math.random() * Planet.NUM_ROWS);
