@@ -79,6 +79,7 @@ public class DifficultyMenuView extends View{
                 break;
             case "R":
                 this.ridiculous();
+                break;
             default:
                 System.out.println("\n*** Invalid Selection *** Try again, It's not that hard.");
                 break;
@@ -91,20 +92,17 @@ public class DifficultyMenuView extends View{
 
     private void easy() {
         System.out.println("\n*** You have chosen the Easy way out. No cudos for you, buddy. ***");
-        OptionsMenuView optionsMenuView = new OptionsMenuView();
-        optionsMenuView.display();
-    }
+
+        }
 
     private void hard() {
         System.out.println("\n*** Obviously this isn't your first Rodeo. ***");
-        OptionsMenuView optionsMenuView = new OptionsMenuView();
-        optionsMenuView.display();
+      
     }
 
     private void ridiculous() {
         System.out.println("\n*** Don't come crying to me when you've pulled all your hairs out. ***");
-        OptionsMenuView optionsMenuView = new OptionsMenuView();
-        optionsMenuView.display();
+     
     }
 
 }

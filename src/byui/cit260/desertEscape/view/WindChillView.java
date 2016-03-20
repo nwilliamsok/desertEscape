@@ -54,7 +54,6 @@ public class WindChillView {
     }
 
     private double gettemp() {
-        Scanner keyboard = new Scanner(System.in);
         double valuetemp;
 
         valuetemp = getDoubleFromKeyboard();
@@ -63,7 +62,6 @@ public class WindChillView {
     }
 
     private double getvelocity() {
-        Scanner keyboard = new Scanner(System.in);
         double valuevelocity;
 
         valuevelocity = getDoubleFromKeyboard();

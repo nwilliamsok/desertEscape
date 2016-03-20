@@ -82,8 +82,7 @@ public class OptionsMenuView extends View {
                 this.displayHelpMenu();
                 break;
             case "B":
-                this.goBack();
-                break;
+                return true;               
 
             default:
                 System.out.println("\n*** Invalid Selection *** Try again, It's not that hard.");
@@ -105,9 +104,6 @@ public class OptionsMenuView extends View {
         helpMenuView.display();
     }
 
-    private void goBack() {
-        MainMenuView mainMenuView = new MainMenuView();
-        mainMenuView.display();
-    }
+   
 
 }

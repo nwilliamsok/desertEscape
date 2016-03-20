@@ -9,6 +9,10 @@ package byui.cit260.desertEscape.model;
  *
  * @author NicolasWilliams
  */
-public class Scene {
+public enum DifficultyLevel {
+    
+  Easy,
+  Hard,
+  Ridiculous;
     
 }

@@ -21,7 +21,7 @@ public class CavesView extends View {
                 + "\n                                            "
                 + "\n            R -     Run                     "
                 + "\n            I -    Inspect                  "
-                + "\n            M -   Main Menu                 "
+                + "\n                                            "
                 + "\n            Q -     Quit                    "
                 + "\n                                            "
                 + "\n--------------------------------------------");
@@ -81,9 +81,8 @@ public class CavesView extends View {
             case "I":
                 this.inspect();
                 break;
-            case "M":
-                this.goBack();
-                break;
+          
+                
 
             default:
                 System.out.println("\n*** Invalid Selection *** Try again, It's not that hard.");
@@ -104,9 +103,5 @@ public class CavesView extends View {
 
     }
 
-    private void goBack() {
-        MainMenuView mainMenuView = new MainMenuView();
-        mainMenuView.display();
-    }
 
 }

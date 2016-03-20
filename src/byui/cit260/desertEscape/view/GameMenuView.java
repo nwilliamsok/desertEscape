@@ -10,8 +10,6 @@ import byui.cit260.desertEscape.model.Location;
 import byui.cit260.desertEscape.model.LocationType;
 import desertescape.DesertEscape;
 import exceptions.GameException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -141,8 +139,8 @@ public class GameMenuView extends View {
 
         //Challenges 
         if (newLocation.getType() == LocationType.AlienCamp) {
-            BuildTimeMachineView tmv = new BuildTimeMachineView();
-            tmv.displayBuildTimeMachineView();
+            TimeMachineView tmv = new TimeMachineView();
+            tmv.displayTimeMachineView();
         } else if (newLocation.getType() == LocationType.Desert___) {
             WindChillView wcv = new WindChillView();
             wcv.displayWindChillView();
