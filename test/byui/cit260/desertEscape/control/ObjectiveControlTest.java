@@ -5,6 +5,7 @@
  */
 package byui.cit260.desertEscape.control;
 
+import exceptions.GameException;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -19,9 +20,10 @@ public class ObjectiveControlTest {
     
     /**
      * Test of calcVolumeOfPit method, of class ObjectiveControl.
+     * @throws exceptions.GameException
      */
     @Test
-    public void testCalcVolumeOfPit() {
+    public void testCalcVolumeOfPit() throws GameException {
         
         System.out.println("calcVolumeOfPit");
        
@@ -36,7 +38,7 @@ public class ObjectiveControlTest {
         ObjectiveControl instance = new ObjectiveControl();
         
         double expResult = 350.0;
-        double result = instance.calcVolumeOfPit(height, width, length);
+        double result = ObjectiveControl.calcVolumeOfPit(height, width, length);
         
         assertEquals(expResult, result, 0.0001);
         
@@ -50,7 +52,7 @@ public class ObjectiveControlTest {
 
         
         expResult = -1.0;
-        result = instance.calcVolumeOfPit(height, width, length);
+        result = ObjectiveControl.calcVolumeOfPit(height, width, length);
         
         assertEquals(expResult, result, 0.0001);
         
@@ -64,7 +66,7 @@ public class ObjectiveControlTest {
 
         
         expResult = -1.0;
-        result = instance.calcVolumeOfPit(height, width, length);
+        result = ObjectiveControl.calcVolumeOfPit(height, width, length);
         
         assertEquals(expResult, result, 0.0001);
         
@@ -78,7 +80,7 @@ public class ObjectiveControlTest {
 
         
         expResult = -1.0;
-        result = instance.calcVolumeOfPit(height, width, length);
+        result = ObjectiveControl.calcVolumeOfPit(height, width, length);
         
         assertEquals(expResult, result, 0.0001);
         
@@ -92,7 +94,7 @@ public class ObjectiveControlTest {
 
         
         expResult = -1.0;
-        result = instance.calcVolumeOfPit(height, width, length);
+        result = ObjectiveControl.calcVolumeOfPit(height, width, length);
         
         assertEquals(expResult, result, 0.0001);
         
@@ -106,7 +108,7 @@ public class ObjectiveControlTest {
 
         
         expResult = -1.0;
-        result = instance.calcVolumeOfPit(height, width, length);
+        result = ObjectiveControl.calcVolumeOfPit(height, width, length);
         
         assertEquals(expResult, result, 0.0001);
         
@@ -120,7 +122,7 @@ public class ObjectiveControlTest {
 
         
         expResult = -1.0;
-        result = instance.calcVolumeOfPit(height, width, length);
+        result = ObjectiveControl.calcVolumeOfPit(height, width, length);
         
         assertEquals(expResult, result, 0.0001);
         
@@ -129,10 +131,11 @@ public class ObjectiveControlTest {
 
     /**
      * Test of calcWindChill method, of class ObjectiveControl.
+     * @throws exceptions.GameException
      */
     
     @Test
-    public void testCalcWindChill() {
+    public void testCalcWindChill() throws GameException {
         System.out.println("calcWindChill");
         
         //Test Case 1
@@ -142,7 +145,7 @@ public class ObjectiveControlTest {
         double velocity = 2.0;
         ObjectiveControl instance = new ObjectiveControl();
         double expResult = 73.0;
-        double result = instance.calcWindChill(temp, velocity);
+        double result = ObjectiveControl.calcWindChill(temp, velocity);
         assertEquals(expResult, result, 0.5);
         
         //Test Case 2
@@ -152,7 +155,7 @@ public class ObjectiveControlTest {
         velocity = -2.0;
 
         expResult = -1.0;
-        result = instance.calcWindChill(temp, velocity);
+        result = ObjectiveControl.calcWindChill(temp, velocity);
         assertEquals(expResult, result, 0.5);
         
         //Test Case 3
@@ -162,7 +165,7 @@ public class ObjectiveControlTest {
         velocity = 80.0;
 
         expResult = -38.0;
-        result = instance.calcWindChill(temp, velocity);
+        result = ObjectiveControl.calcWindChill(temp, velocity);
         assertEquals(expResult, result, 0.5);
         
         //Test Case 4
@@ -172,7 +175,7 @@ public class ObjectiveControlTest {
         velocity = 0.0;
 
         expResult = -1.0;
-        result = instance.calcWindChill(temp, velocity);
+        result = ObjectiveControl.calcWindChill(temp, velocity);
         assertEquals(expResult, result, 0.5);
         
         //Test Case 5
@@ -182,7 +185,7 @@ public class ObjectiveControlTest {
         velocity = 150.0;
 
         expResult = -44.0;
-        result = instance.calcWindChill(temp, velocity);
+        result = ObjectiveControl.calcWindChill(temp, velocity);
         assertEquals(expResult, result, 0.0);
         
         //Test Case 5
@@ -192,7 +195,7 @@ public class ObjectiveControlTest {
         velocity = 1500.0;
 
         expResult = -2079.0;
-        result = instance.calcWindChill(temp, velocity);
+        result = ObjectiveControl.calcWindChill(temp, velocity);
         assertEquals(expResult, result, 0.0);
         
         //Test Case 5
@@ -202,7 +205,7 @@ public class ObjectiveControlTest {
         velocity = 1;
 
         expResult = 47.0;
-        result = instance.calcWindChill(temp, velocity);
+        result = ObjectiveControl.calcWindChill(temp, velocity);
         assertEquals(expResult, result, 0.0);
     }
     
