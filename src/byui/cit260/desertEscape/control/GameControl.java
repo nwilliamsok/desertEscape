@@ -8,8 +8,14 @@ package byui.cit260.desertEscape.control;
 import byui.cit260.desertEscape.model.Planet;
 import byui.cit260.desertEscape.model.Player;
 import byui.cit260.desertEscape.model.Survivor;
+import byui.cit260.desertEscape.view.ErrorView;
 import desertescape.DesertEscape;
 import desertescape.Game;
+import exceptions.GameException;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,21 +40,19 @@ public class GameControl implements Serializable {
     }
 
     public static void createNewGame(Player player) {
-        
+
         Game g = new Game();
         g.setPlayer(player);
-        
+
         Planet gamePlanet = new Planet();
         g.setPlanet(gamePlanet);
-        
+
         setSurvivorLocations(gamePlanet);
-        
+
         player.setLocation(gamePlanet.getLocation(0, 0));
-        
+
         DesertEscape.setGame(g);
     }
-    
-    
 
     public static List<Survivor> createSurvivorList() {
         List<Survivor> survivorList = new ArrayList<>();
@@ -102,29 +106,53 @@ public class GameControl implements Serializable {
     }
 
     public static void setSurvivorLocations(Planet planet) {
-        
+
         List<Survivor> survivor = createSurvivorList();
         boolean success = false;
-        
-        for(Survivor s : survivor) {
-            
+
+        for (Survivor s : survivor) {
+
             do {
-                int row = (int)(Math.random() * Planet.NUM_ROWS);
-                int col = (int)(Math.random() * Planet.NUM_COLS);
-            
-                 success = false;
-                
-                if(planet.getLocation(row, col).getSurvivor() == null) {
+                int row = (int) (Math.random() * Planet.NUM_ROWS);
+                int col = (int) (Math.random() * Planet.NUM_COLS);
+
+                success = false;
+
+                if (planet.getLocation(row, col).getSurvivor() == null) {
                     planet.getLocation(row, col).setSurvivor(s);
                     success = true;
                 }
-                
-            } while(success == false);
-            
-        }
-        
-    }
-    
-    
 
+            } while (success == false);
+
+        }
+
+    }
+
+    public static void saveGame(String filePath) throws GameException {
+        try {
+            FileOutputStream fos = new FileOutputStream(filePath);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            
+            oos.writeObject(DesertEscape.getGame());
+        } catch(Exception e) {
+            ErrorView.display("GameControl", e.getMessage());
+        }
+    }
+
+    public static void resumeGame(String filePath) throws GameException {
+         Game game = null;
+        
+        try {
+            FileInputStream fis = new FileInputStream(filePath);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            
+            game = (Game)ois.readObject();
+            
+            DesertEscape.setGame(game);
+            DesertEscape.setPlayer(game.getPlayer());
+        } catch (Exception e) {
+            ErrorView.display("GameControl", e.getMessage());
+        }
+    }
 }

@@ -13,7 +13,7 @@ import java.util.Scanner;
  *
  * @author NicolasWilliams
  */
-public class WindChillView {
+public class WindChillView extends View {
 
     private String promptMessage;
 
@@ -27,7 +27,7 @@ public class WindChillView {
 
     private void displayBanner() {
 
-        System.out.println(
+        this.console.println(
                 "\n*******************************************************"
                 + "\n*            Calculate Wind Chill Factor              *"
                 + "\n*******************************************************"
@@ -38,14 +38,14 @@ public class WindChillView {
 
         boolean done = false;
         while (!done) {
-            System.out.println("\n" + this.promptMessage + "\n\nTemperature: ");
+            this.console.println("\n" + this.promptMessage + "\n\nTemperature: ");
 
             double temp = this.gettemp();
-            System.out.println("\nVelocity: ");
+            this.console.println("\nVelocity: ");
             double velocity = this.getvelocity();
 
             if (velocity <= 0) {
-                System.out.println("The velocity must be a number greater than 0.");
+                   ErrorView.display(this.getClass().getName(),"The velocity must be a number greater than 0.");
             } else {
                 done = this.doAction(temp, velocity);
             }
@@ -71,7 +71,7 @@ public class WindChillView {
 
     private boolean doAction(double temp, double velocity) throws GameException {
 
-        System.out.println("\n====================================="
+        this.console.println("\n====================================="
                 + "\n|   The Wind Chill Factor is: " + ObjectiveControl.calcWindChill(temp, velocity)
                 + "  |"
                 + "\n====================================="
@@ -79,20 +79,22 @@ public class WindChillView {
         return true;
     }
 
-      public double getDoubleFromKeyboard() {
-        Scanner keyboard = new Scanner(System.in);
+    public double getDoubleFromKeyboard() {
         boolean valid = false;
 
-        while (!valid) {
-            String input = keyboard.nextLine();
-            try {
-                double num = Double.parseDouble(input);
-                return num;
-            } catch (Exception e) {
-                System.out.println("Please enter a number.");
+        try {
+            while (!valid) {
+                String input = keyboard.readLine();
+                try {
+                    double num = Double.parseDouble(input);
+                    return num;
+                } catch (Exception e) {
+                       ErrorView.display(this.getClass().getName(),"Please enter a number." + e.getMessage());
+                }
             }
+        } catch (Exception e) {
+               ErrorView.display(this.getClass().getName(),"Error reading input: " + e.getMessage());
         }
-
         return 0;
     }
 }

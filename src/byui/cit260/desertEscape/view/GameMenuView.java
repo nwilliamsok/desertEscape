@@ -58,6 +58,7 @@ public class GameMenuView extends View {
                     break;
                 case "C":
                     collectResource();
+                    break;
                 case "U":
                     up();
                     break;
@@ -73,36 +74,36 @@ public class GameMenuView extends View {
                 case "Q":
                     return true;
                 default:
-                    System.out.println("\n*** Invalid Selection *** Try again, It's not that hard.");
+                       ErrorView.display(this.getClass().getName(),"\n*** Invalid Selection *** Try again, It's not that hard.");
                     break;
 
             }
 
             return false;
         } catch (GameException ex) {
-            System.out.println("Unknown Error");
+               ErrorView.display(this.getClass().getName(),"Error in GameMenuView");
         }
         return false;
 
     }
 
     public void storyLine() {
-        System.out.println("\n***Story line goes here ***");
+        this.console.println("\n***Story line goes here ***");
     }
 
     public void about() {
-        System.out.println("\n***About section goes here ***");
+        this.console.println("\n***About section goes here ***");
     }
 
     private void viewPlanet() {
         Location curLoc = DesertEscape.getPlayer().getLocation();
-        System.out.println(DesertEscape.getGame().getPlanet().getPlanetString(curLoc));
+        this.console.println(DesertEscape.getGame().getPlanet().getPlanetString(curLoc));
     }
 
     private void up() throws GameException {
         PlanetControl pc = new PlanetControl();
         if (pc.up(DesertEscape.getGame()) == false) {
-            System.out.println("You cannot move there");
+            this.console.println("You cannot move there");
         } else {
             doCondition(DesertEscape.getPlayer().getLocation());
         }
@@ -111,7 +112,7 @@ public class GameMenuView extends View {
     private void down() throws GameException {
         PlanetControl pc = new PlanetControl();
         if (pc.down(DesertEscape.getGame()) == false) {
-            System.out.println("You cannot move there");
+            this.console.println("You cannot move there");
         } else {
             doCondition(DesertEscape.getPlayer().getLocation());
         }
@@ -120,7 +121,7 @@ public class GameMenuView extends View {
     private void left() throws GameException {
         PlanetControl pc = new PlanetControl();
         if (pc.left(DesertEscape.getGame()) == false) {
-            System.out.println("You cannot move there");
+            this.console.println("You cannot move there");
         } else {
             doCondition(DesertEscape.getPlayer().getLocation());
         }
@@ -129,7 +130,7 @@ public class GameMenuView extends View {
     private void right() throws GameException {
         PlanetControl pc = new PlanetControl();
         if (pc.right(DesertEscape.getGame()) == false) {
-            System.out.println("You cannot move there");
+            this.console.println("You cannot move there");
         } else {
             doCondition(DesertEscape.getPlayer().getLocation());
         }
@@ -151,13 +152,13 @@ public class GameMenuView extends View {
 
         //Survivors
         if (newLocation.getSurvivor() != null) {
-            System.out.println("You ran into: " + newLocation.getSurvivor().getName() + "\n" + newLocation.getSurvivor().getDescription());
+            this.console.println("You ran into: " + newLocation.getSurvivor().getName() + "\n" + newLocation.getSurvivor().getDescription());
         }
 
     }
 
     private void collectResource() {
-System.out.println("Not implemented yet");
+this.console.println("Not implemented yet");
     }
 
 }

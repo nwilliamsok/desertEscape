@@ -28,7 +28,7 @@ public class HelpMenuView extends View {
 
     @Override
     public boolean doAction(String value) {
-
+try {
         value = value.toUpperCase();
 
         switch (value) {
@@ -43,21 +43,23 @@ public class HelpMenuView extends View {
             case "Q":
                 return true;
             default:
-                System.out.println("\n*** Invalid Selection *** Try again, It's not that hard.");
+                   ErrorView.display(this.getClass().getName(),"\n*** Invalid Selection *** Try again, It's not that hard.");
                 break;
 
         }
-
+}catch (Exception e){
+       ErrorView.display(this.getClass().getName(),"Error in Help Menu View");
+}
         return false;
 
     }
 
     public void storyLine() {
-        System.out.println("\n***Story line goes here ***");
+        this.console.println("\n***Story line goes here ***");
     }
 
     public void about() {
-        System.out.println("\n***About section goes here ***");
+        this.console.println("\n***About section goes here ***");
     }
 
 }

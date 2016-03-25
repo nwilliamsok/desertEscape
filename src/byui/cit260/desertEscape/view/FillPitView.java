@@ -13,7 +13,7 @@ import java.util.Scanner;
  *
  * @author NicolasWilliams
  */
-public class FillPitView {
+public class FillPitView extends View {
 
     private String promptMessage;
 
@@ -27,7 +27,7 @@ public class FillPitView {
 
     private void displayBanner() {
 
-        System.out.println(
+        this.console.println(
                 "\n*******************************************************"
                 + "\n*            Calculate Volume of a Pit                *"
                 + "\n*******************************************************"
@@ -38,22 +38,23 @@ public class FillPitView {
 
         boolean done = false;
         while (!done) {
-            System.out.println("\n" + this.promptMessage + "\n\nHeight: ");
+            this.console.println("\n" + this.promptMessage + "\n\nHeight: ");
 
             double height = this.getheight();
-            System.out.println("\nWidth: ");
+            this.console.println("\nWidth: ");
             double width = this.getwidth();
-            System.out.println("\nLength:");
+            this.console.println("\nLength:");
             double length = this.getlength();
 
             if (height <= 0) {
-                System.out.println("The height must be a number greater than 0.");
-                if (width <= 0) {
-                    System.out.println("The width must be a number greater than 0.");
-                }
-                if (length <= 0) {
-                    System.out.println("The length must be a number greater than 0.");
-                }
+                this.console.println("The height must be a number greater than 0.");
+            }
+            if (width <= 0) {
+                this.console.println("The width must be a number greater than 0.");
+            }
+            if (length <= 0) {
+                this.console.println("The length must be a number greater than 0.");
+
             } else {
                 done = this.doAction(height, width, length);
             }
@@ -88,7 +89,7 @@ public class FillPitView {
 
     private boolean doAction(double height, double width, double length) throws GameException {
 
-        System.out.println("\n====================================="
+        this.console.println("\n====================================="
                 + "\n|   The volume of the pit is: " + ObjectiveControl.calcVolumeOfPit(height, width, length)
                 + "  |"
                 + "\n====================================="
@@ -97,19 +98,20 @@ public class FillPitView {
     }
 
     public double getDoubleFromKeyboard() {
-        Scanner keyboard = new Scanner(System.in);
         boolean valid = false;
-
-        while (!valid) {
-            String input = keyboard.nextLine();
-            try {
-                double num = Double.parseDouble(input);
-                return num;
-            } catch (Exception e) {
-                System.out.println("Please enter a number.");
+        try {
+            while (!valid) {
+                String input = keyboard.readLine();
+                try {
+                    double num = Double.parseDouble(input);
+                    return num;
+                } catch (Exception e) {
+                    ErrorView.display(this.getClass().getName(), "Please enter a number.");
+                }
             }
+        } catch (Exception e) {
+            ErrorView.display(this.getClass().getName(), "Error reading input: " + e.getMessage());
         }
-
         return 0;
     }
 

@@ -48,7 +48,7 @@ public class ObjectiveControl implements Serializable {
 
         String gameStatus = "You must escape the desert and save your planet.";
         if (BMI < 1) {
-            throw new GameException("BMI must be greater than 1");
+            throw new GameException("/nBMI must be greater than 1");
         }
 
         if (BMI < 18.5) {
@@ -64,15 +64,18 @@ public class ObjectiveControl implements Serializable {
         return gameStatus;
     }
 
-    public int calcBMI(double height, double weight) throws GameException {
+    public static double calcBMI(double height, double weight) throws GameException {
+        if (height < 1 && weight < 1) {
+            throw new GameException(" Weight and Height must be greater than 1");
+        }
         if (weight < 1) {
-            throw new GameException("Weight must be greater than 1");
+            throw new GameException(" Weight must be greater than 1");
         }
         if (height < 1) {
-            throw new GameException("Height must be greater than 1");
+            throw new GameException(" Height must be greater than 1");
         }
 
-        int BMI = (int) Math.round((weight * 703 / Math.pow(height, 2)));
+        double BMI = Math.round((weight * 703 / Math.pow(height, 2)));
         return BMI;
     }
 }

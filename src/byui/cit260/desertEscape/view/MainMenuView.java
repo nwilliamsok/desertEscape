@@ -21,7 +21,8 @@ public class MainMenuView extends View {
                 + "\n---------------------------------------"
                 + "\n                                       "
                 + "\n      N -      New Game                "
-                + "\n      R -  Resume Saved Game           "
+                + "\n      S -     Save Game                "
+                + "\n      R -    Resume Game               "
                 + "\n      O -      Options                 "
                 + "\n      H -        Help                  "
                 + "\n      Q -        Quit                  "
@@ -32,42 +33,58 @@ public class MainMenuView extends View {
     @Override
     public boolean doAction(String value) {
 
-        value = value.toUpperCase();
+        try {
+            value = value.toUpperCase();
 
-        switch (value) {
-            case "N":
-                this.startNewGame();
-                break;
-            case "R":
-                this.resumeGame();
-                break;
-            case "O":
-                this.displayOptionsMenu();
-                break;
-            case "H":
-                this.displayHelpMenu();
-                break;
-            case "Q":
-                return false;
-            default:
-                System.out.println("\n*** Invalid Selection *** Try again, It's not that hard.");
-                break;
+            switch (value) {
+                case "N":
+                    this.newGame();
+                    break;
+                case "S":
+                    this.saveGame();
+                    break;
+                case "R":
+                    this.resumeGame();
+                    break;
+                case "O":
+                    this.displayOptionsMenu();
+                    break;
+                case "H":
+                    this.displayHelpMenu();
+                    break;
+                case "Q":
+                    return false;
+                default:
+                    ErrorView.display(this.getClass().getName(), "\n*** Invalid Selection *** Try again, It's not that hard.");
+                    break;
 
+            }
+        } catch (Exception e) {
+            ErrorView.display(this.getClass().getName(), "Error in MainMenuView" + e.getMessage());
         }
-
         return false;
 
     }
 
-    public void startNewGame() {
-        
+    public void newGame() {
+
         GameControl.createNewGame(DesertEscape.getPlayer());
         GameMenuView gameMenu = new GameMenuView();
         gameMenu.display();
     }
 
     private void resumeGame() {
-        System.out.println("*** resumeGame function called ***");
+        this.console.println("\n\nEnter the file path for file where the game is saved");
+        String filePath = this.getInput();
+
+        try {
+            GameControl.resumeGame(filePath);
+        } catch (Exception ex) {
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
+        
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.display();
     }
 
     private void displayOptionsMenu() {
@@ -78,6 +95,16 @@ public class MainMenuView extends View {
     private void displayHelpMenu() {
         HelpMenuView helpMenuView = new HelpMenuView();
         helpMenuView.display();
+    }
+
+      private void saveGame() {
+        console.println("Enter file name: ");
+        try {
+            String fileName = keyboard.readLine();
+            GameControl.saveGame(fileName);
+        } catch (Exception e) {
+            ErrorView.display(this.getClass().getName(), "Error on input");
+        }
     }
 
 }

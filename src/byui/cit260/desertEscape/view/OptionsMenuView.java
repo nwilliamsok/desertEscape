@@ -30,7 +30,7 @@ public class OptionsMenuView extends View {
     @Override
     public void display() {
 
-        System.out.println("\n" + this.displayMessage);
+        this.console.println("\n" + this.displayMessage);
 
         boolean done = false;
         do {
@@ -47,24 +47,26 @@ public class OptionsMenuView extends View {
     @Override
     public String getInput() {
 
-        Scanner keyboard = new Scanner(System.in);
         String value = "";
         boolean valid = false;
-
+try {
         while (!valid) {
-            System.out.println("\nSelect an option");
+            this.console.println("\nSelect an option");
 
-            value = keyboard.nextLine();
+            value = keyboard.readLine();
             value = value.trim();
 
             if (value.length() < 1) {
-                System.out.println("\nInvalid value: value can not be blank");
+                   ErrorView.display(this.getClass().getName(),"\nInvalid value: value can not be blank");
                 continue;
             }
 
             break;
 
         }
+} catch (Exception e) {
+       ErrorView.display(this.getClass().getName(),"Error in OptionsMenuView " + e.getMessage());
+}
         return value;
 
     }
@@ -72,6 +74,7 @@ public class OptionsMenuView extends View {
     @Override
     public boolean doAction(String value) {
 
+        try {
         value = value.toUpperCase();
 
         switch (value) {
@@ -85,11 +88,13 @@ public class OptionsMenuView extends View {
                 return true;               
 
             default:
-                System.out.println("\n*** Invalid Selection *** Try again, It's not that hard.");
+                   ErrorView.display(this.getClass().getName(),"\n*** Invalid Selection *** Try again, It's not that hard.");
                 break;
 
         }
-
+        } catch (Exception e) {
+               ErrorView.display(this.getClass().getName(),"Error in OptionsMenuView" + e.getMessage());
+        }
         return true;
 
     }
