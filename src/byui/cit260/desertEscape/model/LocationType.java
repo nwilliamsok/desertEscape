@@ -5,18 +5,28 @@
  */
 package byui.cit260.desertEscape.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author NicolasWilliams
  */
-public enum LocationType {
+public enum LocationType implements Serializable {
     
-    Desert___,
-    Pyramid__,
-    Mountains,
-    AlienCamp,
-    Caves____,
-    Cliffs___
+    Desert___("Desert"),
+    Pyramid__("Pyramid"),
+    Mountains("Mountains"),
+    AlienCamp("Alien Camp"),
+    Caves____("Caves"),
+    Cliffs___("Caves");
     
-    
+    private final String LocationList;
+
+    private LocationType(String LocationList) {
+        this.LocationList = LocationList;
+    }
+
+    public String getLocationList() {
+        return LocationList;
+    }
 }

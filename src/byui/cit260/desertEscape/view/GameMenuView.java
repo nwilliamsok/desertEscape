@@ -5,11 +5,16 @@
  */
 package byui.cit260.desertEscape.view;
 
+import byui.cit260.desertEscape.control.GameControl;
 import byui.cit260.desertEscape.control.PlanetControl;
+import byui.cit260.desertEscape.model.Item;
 import byui.cit260.desertEscape.model.Location;
 import byui.cit260.desertEscape.model.LocationType;
+import byui.cit260.desertEscape.model.Player;
 import desertescape.DesertEscape;
 import exceptions.GameException;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  *
@@ -26,8 +31,11 @@ public class GameMenuView extends View {
                 + "\n           S - Storyline                  "
                 + "\n           A - About                      "
                 + "\n           M - Main Menu                  "
+                + "\n                                          "
                 + "\n           V - View Planet                "
-                + "\n           C - Collect Resource           "
+                + "\n           P - Print Planet Map           "
+                + "\n           I - Inventory                  "
+                + "\n           C - Collect Item               "
                 + "\n                                          "
                 + "\n           U - Move Up                    "
                 + "\n           D - Move Down                  "
@@ -56,8 +64,14 @@ public class GameMenuView extends View {
                 case "V":
                     viewPlanet();
                     break;
+                    case "P":
+                this.printPlanetMap();
+                    break;
                 case "C":
-                    collectResource();
+                    collectItem();
+                    break;
+                case "I":
+                    displayInventory();
                     break;
                 case "U":
                     up();
@@ -156,9 +170,25 @@ public class GameMenuView extends View {
         }
 
     }
-
-    private void collectResource() {
-this.console.println("Not implemented yet");
+    
+    private void displayInventory() {
+               throw new UnsupportedOperationException("\tNot supported yet."); //To change body of generated methods, choose Tools | Templates.
+       //this.console.println(Arrays.toString(Item.values()));
     }
+
+    private void collectItem() {
+       throw new UnsupportedOperationException("\tNot supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+     private void printPlanetMap() {
+        console.println("Enter file name: ");
+        try {
+            String fileName = keyboard.readLine();
+            PlanetControl.printPlanetMap(fileName);
+        } catch (Exception e) {
+            ErrorView.display(this.getClass().getName(), "Error on input");
+        }
+    }
+
 
 }

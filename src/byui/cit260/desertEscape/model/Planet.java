@@ -77,4 +77,19 @@ public class Planet implements Serializable{
     public Location getLocation(int row, int col) {
         return matrix[row][col];
     }
+
+    public Location[][] getMatrix() {
+        return matrix;
+    }
+
+    public void setMatrix(Location[][] matrix) {
+        this.matrix = matrix;
+    }
+
+    @Override
+    public String toString() {
+        return "Planet{" + "matrix=" + matrix + '}';
+    }
+    
+    
 }

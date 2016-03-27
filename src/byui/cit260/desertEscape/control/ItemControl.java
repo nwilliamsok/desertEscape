@@ -11,6 +11,6 @@ import java.io.Serializable;
  *
  * @author NicolasWilliams
  */
-public class InventoryControl implements Serializable{
+public class ItemControl implements Serializable{   
     
 }

@@ -18,6 +18,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -133,26 +134,27 @@ public class GameControl implements Serializable {
         try {
             FileOutputStream fos = new FileOutputStream(filePath);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
-            
+
             oos.writeObject(DesertEscape.getGame());
-        } catch(Exception e) {
+        } catch (Exception e) {
             ErrorView.display("GameControl", e.getMessage());
         }
     }
 
     public static void resumeGame(String filePath) throws GameException {
-         Game game = null;
-        
+        Game game = null;
+
         try {
             FileInputStream fis = new FileInputStream(filePath);
             ObjectInputStream ois = new ObjectInputStream(fis);
-            
-            game = (Game)ois.readObject();
-            
+
+            game = (Game) ois.readObject();
+
             DesertEscape.setGame(game);
             DesertEscape.setPlayer(game.getPlayer());
         } catch (Exception e) {
             ErrorView.display("GameControl", e.getMessage());
         }
     }
+    
 }

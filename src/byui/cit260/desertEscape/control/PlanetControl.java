@@ -10,6 +10,11 @@ import byui.cit260.desertEscape.model.Player;
 import desertescape.Game;
 import java.io.Serializable;
 import byui.cit260.desertEscape.model.Planet;
+import byui.cit260.desertEscape.view.ErrorView;
+import desertescape.DesertEscape;
+import exceptions.GameException;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 
 /**
  *
@@ -76,6 +81,17 @@ public class PlanetControl implements Serializable {
         player.setLocation(planet.getLocation(currentLocation.getRow(), currentLocation.getCol() - 1));
         
         return true;
+    }
+    
+    public static void printPlanetMap(String filePath) throws GameException {
+        try {
+            FileOutputStream fos = new FileOutputStream(filePath);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+            oos.writeObject("  ***************************************THIS IS THE PLANET MAP***************************************\n\n" + DesertEscape.getGame().getPlanet().getPlanetString());
+        } catch (Exception e) {
+            ErrorView.display("GameControl", e.getMessage());
+        }
     }
 
 }

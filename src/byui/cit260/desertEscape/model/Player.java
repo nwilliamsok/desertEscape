@@ -18,7 +18,7 @@ public class Player implements Serializable {
 
     private String name;
     Location location;
-    List<InventoryItem> inventory;
+    List<Item> inventory;
     Difficulty difficulty;
 
    public Player() {
@@ -41,13 +41,16 @@ public class Player implements Serializable {
         this.location = location;
     }
 
-    public List<InventoryItem> getInventory() {
+    public List<Item> getInventory() {
         return inventory;
     }
 
-    public void setInventory(List<InventoryItem> inventory) {
+    public void setInventory(List<Item> inventory) {
         this.inventory = inventory;
     }
+    
+    
+    
 
     public Difficulty getDifficulty() {
         return difficulty;
@@ -93,6 +96,12 @@ public class Player implements Serializable {
     public String toString() {
         return "Player{" + "name=" + name + ", location=" + location + ", inventory=" + inventory + '}';
     }
+
+    
+
+    
+
+    
 
  
 

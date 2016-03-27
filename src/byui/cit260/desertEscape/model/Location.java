@@ -15,7 +15,7 @@ public class Location implements Serializable{
     
     private LocationType type;
     private String description;
-    private InventoryItem inventoryItem;
+    private Item item;
     private Survivor survivor;
     private int row;
     private int col;
@@ -55,12 +55,12 @@ public class Location implements Serializable{
         this.description = description;
     }
 
-    public InventoryItem getInventoryItem() {
-        return inventoryItem;
+    public Item getItem() {
+        return item;
     }
 
-    public void setInventoryItem(InventoryItem inventoryItem) {
-        this.inventoryItem = inventoryItem;
+    public void setItem(Item item) {
+        this.item = item;
     }
 
     public Survivor getSurvivor() {
