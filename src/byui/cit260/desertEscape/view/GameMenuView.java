@@ -181,10 +181,10 @@ public class GameMenuView extends View {
     }
 
      private void printPlanetMap() {
-        console.println("Enter file name: ");
         try {
-            String fileName = keyboard.readLine();
+            String fileName = "PlanetMap.txt";
             PlanetControl.printPlanetMap(fileName);
+            console.println("Printed map to PlanetMap.txt");
         } catch (Exception e) {
             ErrorView.display(this.getClass().getName(), "Error on input");
         }
