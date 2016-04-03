@@ -19,9 +19,9 @@ public class ErrorView {
     
     public static void display(String className, String errorMessage) {
         errorFile.println(
-                "\n*******************************************************"
+                "\n------------------------------------------"
                 + "\n - Error - " + errorMessage
-                + "\n*******************************************************");
+                + "\n------------------------------------------");
         
         logFile.println(className + " - " + errorMessage);
     }

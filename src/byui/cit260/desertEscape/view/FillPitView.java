@@ -7,7 +7,6 @@ package byui.cit260.desertEscape.view;
 
 import byui.cit260.desertEscape.control.ObjectiveControl;
 import exceptions.GameException;
-import java.util.Scanner;
 
 /**
  *
@@ -28,9 +27,9 @@ public class FillPitView extends View {
     private void displayBanner() {
 
         this.console.println(
-                "\n*******************************************************"
-                + "\n*            Calculate Volume of a Pit                *"
-                + "\n*******************************************************"
+                "\n------------------------------------------"
+                + "\n|  Calculate Volume of a Pit             |"
+                + "\n------------------------------------------"
         );
     }
 
@@ -89,10 +88,10 @@ public class FillPitView extends View {
 
     private boolean doAction(double height, double width, double length) throws GameException {
 
-        this.console.println("\n====================================="
+        this.console.println("\n------------------------------------------"
                 + "\n|   The volume of the pit is: " + ObjectiveControl.calcVolumeOfPit(height, width, length)
                 + "  |"
-                + "\n====================================="
+                + "\n------------------------------------------"
         );
         return true;
     }

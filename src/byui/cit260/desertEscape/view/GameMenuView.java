@@ -10,12 +10,9 @@ import byui.cit260.desertEscape.control.PlanetControl;
 import byui.cit260.desertEscape.model.Item;
 import byui.cit260.desertEscape.model.Location;
 import byui.cit260.desertEscape.model.LocationType;
-import byui.cit260.desertEscape.model.Player;
 import desertescape.DesertEscape;
 import exceptions.GameException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+
 
 /**
  *

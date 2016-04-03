@@ -7,7 +7,6 @@ package byui.cit260.desertEscape.view;
 
 import byui.cit260.desertEscape.control.ObjectiveControl;
 import exceptions.GameException;
-import java.util.Scanner;
 
 /**
  *
@@ -28,9 +27,9 @@ public class TimeMachineView extends View {
     private void displayBanner() {
 
         this.console.println(
-                "\n*******************************************************"
-                + "\n*         Calculate BMI & Build Time Machine          *"
-                + "\n*******************************************************"
+                "\n------------------------------------------"
+                + "\n|   Calculate BMI & Build Time Machine   |"
+                + "\n------------------------------------------"
         );
     }
 

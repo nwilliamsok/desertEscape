@@ -5,7 +5,6 @@
  */
 package byui.cit260.desertEscape.view;
 
-import java.util.Scanner;
 
 /**
  *

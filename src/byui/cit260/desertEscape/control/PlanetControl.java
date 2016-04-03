@@ -87,8 +87,9 @@ public class PlanetControl implements Serializable {
         try {
             FileOutputStream fos = new FileOutputStream(filePath);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
-
-            oos.writeObject("  ***************************************THIS IS THE PLANET MAP***************************************\n\n" + DesertEscape.getGame().getPlanet().getSurvivorString() + "\n\n\n\n" + DesertEscape.getGame().getPlanet().getItemString());
+            Location curLoc = DesertEscape.getPlayer().getLocation();
+            
+            oos.writeObject("  ***************************************THIS IS THE PLANET MAP***************************************\n\n" + "Player Location: \n"+ DesertEscape.getGame().getPlanet().getPlanetString(curLoc) + "\n\n\nItem Locations: \n" + DesertEscape.getGame().getPlanet().getItemString() + "\n\n\nSurvivor Locations: \n" + DesertEscape.getGame().getPlanet().getSurvivorString());
         } catch (Exception e) {
             ErrorView.display("GameControl", e.getMessage());
         }

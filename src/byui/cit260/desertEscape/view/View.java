@@ -8,7 +8,6 @@ package byui.cit260.desertEscape.view;
 import desertescape.DesertEscape;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
-import java.util.Scanner;
 
 /**
  *

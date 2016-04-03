@@ -7,7 +7,6 @@ package byui.cit260.desertEscape.view;
 
 import byui.cit260.desertEscape.control.ObjectiveControl;
 import exceptions.GameException;
-import java.util.Scanner;
 
 /**
  *
@@ -71,10 +70,10 @@ public class WindChillView extends View {
 
     private boolean doAction(double temp, double velocity) throws GameException {
 
-        this.console.println("\n====================================="
+        this.console.println("\n------------------------------------------"
                 + "\n|   The Wind Chill Factor is: " + ObjectiveControl.calcWindChill(temp, velocity)
                 + "  |"
-                + "\n====================================="
+                + "\n------------------------------------------"
         );
         return true;
     }

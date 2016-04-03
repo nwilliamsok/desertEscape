@@ -7,7 +7,6 @@ package byui.cit260.desertEscape.view;
 
 import byui.cit260.desertEscape.control.GameControl;
 import byui.cit260.desertEscape.model.Player;
-import java.util.Scanner;
 
 /**
  *
@@ -114,10 +113,15 @@ try {
     }
 
     private void displayNextView(Player player) {
-        this.console.println("\n====================================="
-                + "\n Welcome to the game " + player.getName()
-                + "\n Try not to get hurt..."
-                + "\n====================================="
+        this.console.println("\n------------------------------------------"
+                + "\n     **Welcome to the game " + player.getName() + "** "
+                + "\n|           Please review the:           |"
+                + "\n|              --Storyline--             |"
+                + "\n|                    &                   |"
+                + "\n|              --About Game--            |"
+                + "\n|        Located in the Help Menu        |"
+                + "\n|       Before starting a new game       |"
+                + "\n------------------------------------------"
         );
 
         MainMenuView mainMenuView = new MainMenuView();
