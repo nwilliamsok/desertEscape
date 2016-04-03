@@ -35,7 +35,7 @@ public class PlanetControl implements Serializable {
         player.setLocation(planet.getLocation(currentLocation.getRow() - 1, currentLocation.getCol()
         ));
 
-      return true;
+        return true;
     }
 
     public boolean right(Game game) {
@@ -69,27 +69,27 @@ public class PlanetControl implements Serializable {
     }
 
     public boolean left(Game game) {
-        
+
         Player player = game.getPlayer();
         Location currentLocation = player.getLocation();
         Planet planet = game.getPlanet();
-        
-        if(currentLocation.getCol() == 0) {
+
+        if (currentLocation.getCol() == 0) {
             return false;
         }
-        
+
         player.setLocation(planet.getLocation(currentLocation.getRow(), currentLocation.getCol() - 1));
-        
+
         return true;
     }
-    
+
     public static void printPlanetMap(String filePath) throws GameException {
         try {
             FileOutputStream fos = new FileOutputStream(filePath);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             Location curLoc = DesertEscape.getPlayer().getLocation();
-            
-            oos.writeObject("  ***************************************THIS IS THE PLANET MAP***************************************\n\n" + "Player Location: \n"+ DesertEscape.getGame().getPlanet().getPlanetString(curLoc) + "\n\n\nItem Locations: \n" + DesertEscape.getGame().getPlanet().getItemString() + "\n\n\nSurvivor Locations: \n" + DesertEscape.getGame().getPlanet().getSurvivorString());
+
+            oos.writeObject("  ***************************************THIS IS THE PLANET MAP***************************************\n\n" + "Player Location: \n" + DesertEscape.getGame().getPlanet().getPlanetString(curLoc) + "\n\n\nItem Locations: \n" + DesertEscape.getGame().getPlanet().getItemString() + "\n\n\nSurvivor Locations: \n" + DesertEscape.getGame().getPlanet().getSurvivorString());
         } catch (Exception e) {
             ErrorView.display("GameControl", e.getMessage());
         }

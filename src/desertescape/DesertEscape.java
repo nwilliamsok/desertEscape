@@ -17,7 +17,7 @@ import java.io.PrintWriter;
  *
  * @author NicolasWilliams
  */
-public class DesertEscape extends View{
+public class DesertEscape extends View {
 
     /**
      * @param args the command line arguments
@@ -29,7 +29,6 @@ public class DesertEscape extends View{
     private static BufferedReader inFile = null;
 
     private static PrintWriter logFile = null;
-    
 
     public static void main(String[] args) {
 
@@ -48,10 +47,7 @@ public class DesertEscape extends View{
 
             e.printStackTrace();
         }
-        
-        
-        
-        
+
         StartProgramView startProgramView = new StartProgramView();
 
         try {
@@ -62,15 +58,18 @@ public class DesertEscape extends View{
             startProgramView.displayStartProgramView();
         } finally {
             try {
-                if (DesertEscape.inFile != null) 
+                if (DesertEscape.inFile != null) {
                     DesertEscape.inFile.close();
-                
-                if (DesertEscape.outFile != null) 
+                }
+
+                if (DesertEscape.outFile != null) {
                     DesertEscape.outFile.close();
-                    
-                if (DesertEscape.logFile != null) 
+                }
+
+                if (DesertEscape.logFile != null) {
                     DesertEscape.logFile.close();
-                
+                }
+
             } catch (IOException ex) {
                 System.out.println("Error closing files");
                 return;

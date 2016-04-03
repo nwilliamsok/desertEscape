@@ -82,7 +82,7 @@ public class MainMenuView extends View {
         } catch (Exception ex) {
             ErrorView.display("MainMenuView", ex.getMessage());
         }
-        
+
         GameMenuView gameMenu = new GameMenuView();
         gameMenu.display();
     }
@@ -106,10 +106,5 @@ public class MainMenuView extends View {
             ErrorView.display(this.getClass().getName(), "Error on input");
         }
     }
-      
-   
-      
-
-      
 
 }

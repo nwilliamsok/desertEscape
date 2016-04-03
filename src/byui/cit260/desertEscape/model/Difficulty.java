@@ -11,11 +11,9 @@ import java.io.Serializable;
  *
  * @author NicolasWilliams
  */
-public class Difficulty implements Serializable{
-    
-    private DifficultyLevel level;
-    
+public class Difficulty implements Serializable {
 
+    private DifficultyLevel level;
 
     public Difficulty() {
     }

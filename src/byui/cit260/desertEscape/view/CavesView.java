@@ -5,7 +5,6 @@
  */
 package byui.cit260.desertEscape.view;
 
-
 /**
  *
  * @author NicolasWilliams
@@ -48,49 +47,49 @@ public class CavesView extends View {
 
         String value = "";
         boolean valid = false;
-try {
-        while (!valid) {
-            this.console.println("\nSelect an option");
+        try {
+            while (!valid) {
+                this.console.println("\nSelect an option");
 
-            value = keyboard.readLine();
-            value = value.trim();
+                value = keyboard.readLine();
+                value = value.trim();
 
-            if (value.length() < 1) {
-                ErrorView.display(this.getClass().getName(),"\nInvalid value: value can not be blank");
-                continue;
+                if (value.length() < 1) {
+                    ErrorView.display(this.getClass().getName(), "\nInvalid value: value can not be blank");
+                    continue;
+                }
+
+                break;
+
             }
-
-            break;
-
-        }
         } catch (Exception e) {
-       ErrorView.display(this.getClass().getName(),"Error reading input: " + e.getMessage());
-}
+            ErrorView.display(this.getClass().getName(), "Error reading input: " + e.getMessage());
+        }
         return value;
 
     }
 
     @Override
     public boolean doAction(String value) {
-try {
-        value = value.toUpperCase();
+        try {
+            value = value.toUpperCase();
 
-        switch (value) {
-            case "R":
-                this.run();
-                break;
-            case "I":
-                this.inspect();
-                break;
+            switch (value) {
+                case "R":
+                    this.run();
+                    break;
+                case "I":
+                    this.inspect();
+                    break;
 
-            default:
-                   ErrorView.display(this.getClass().getName(),"\n*** Invalid Selection *** Try again, It's not that hard.");
-                break;
+                default:
+                    ErrorView.display(this.getClass().getName(), "\n*** Invalid Selection *** Try again, It's not that hard.");
+                    break;
 
+            }
+        } catch (Exception e) {
+            ErrorView.display(this.getClass().getName(), "Error in CavesView" + e.getMessage());
         }
-} catch (Exception e){
-       ErrorView.display(this.getClass().getName(),"Error in CavesView" + e.getMessage());
-}
         return true;
 
     }
@@ -103,6 +102,5 @@ try {
         this.console.println("\n*** Inspect Function Called ***");
 
     }
-
 
 }

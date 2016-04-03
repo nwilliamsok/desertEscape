@@ -27,9 +27,9 @@ public class WindChillView extends View {
     private void displayBanner() {
 
         this.console.println(
-                "\n*******************************************************"
-                + "\n*            Calculate Wind Chill Factor              *"
-                + "\n*******************************************************"
+                "\n------------------------------------------"
+                + "\n|      Calculate Wind Chill Factor       |"
+                + "\n------------------------------------------"
         );
     }
 
@@ -44,7 +44,7 @@ public class WindChillView extends View {
             double velocity = this.getvelocity();
 
             if (velocity <= 0) {
-                   ErrorView.display(this.getClass().getName(),"The velocity must be a number greater than 0.");
+                ErrorView.display(this.getClass().getName(), "The velocity must be a number greater than 0.");
             } else {
                 done = this.doAction(temp, velocity);
             }
@@ -72,7 +72,7 @@ public class WindChillView extends View {
 
         this.console.println("\n------------------------------------------"
                 + "\n|   The Wind Chill Factor is: " + ObjectiveControl.calcWindChill(temp, velocity)
-                + "  |"
+                + "      |"
                 + "\n------------------------------------------"
         );
         return true;
@@ -88,11 +88,11 @@ public class WindChillView extends View {
                     double num = Double.parseDouble(input);
                     return num;
                 } catch (Exception e) {
-                       ErrorView.display(this.getClass().getName(),"Please enter a number." + e.getMessage());
+                    ErrorView.display(this.getClass().getName(), "Please enter a number." + e.getMessage());
                 }
             }
         } catch (Exception e) {
-               ErrorView.display(this.getClass().getName(),"Error reading input: " + e.getMessage());
+            ErrorView.display(this.getClass().getName(), "Error reading input: " + e.getMessage());
         }
         return 0;
     }

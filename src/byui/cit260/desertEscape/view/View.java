@@ -16,7 +16,7 @@ import java.io.PrintWriter;
 public abstract class View implements ViewInterface {
 
     protected String displayMessage;
-    
+
     protected final BufferedReader keyboard = DesertEscape.getInFile();
     protected final PrintWriter console = DesertEscape.getOutFile();
 
@@ -45,20 +45,20 @@ public abstract class View implements ViewInterface {
 
         boolean valid = false;
         String value = null;
-try {
-        while (!valid) {
-            this.console.println("\n" + this.displayMessage);
-            value = keyboard.readLine();
-            value = value.trim();
-            if (value.length() < 1) {
-                System.out.println("\n*** You must enter a value *** ");
-                continue;
+        try {
+            while (!valid) {
+                this.console.println("\n" + this.displayMessage);
+                value = keyboard.readLine();
+                value = value.trim();
+                if (value.length() < 1) {
+                    System.out.println("\n*** You must enter a value *** ");
+                    continue;
+                }
+                break;
             }
-            break;
+        } catch (Exception e) {
+            System.out.println("Error reading input: " + e.getMessage());
         }
-} catch (Exception e) {
-    System.out.println("Error reading input: " + e.getMessage());
-}
         return value;
     }
 

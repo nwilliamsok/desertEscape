@@ -12,7 +12,7 @@ import byui.cit260.desertEscape.model.Player;
  *
  * @author NicolasWilliams
  */
-public class StartProgramView extends View{
+public class StartProgramView extends View {
 
     private String promptMessage;
 
@@ -69,46 +69,45 @@ public class StartProgramView extends View{
         boolean valid = false;
 
         try {
-        while (!valid) {
-            this.console.println("\n" + this.promptMessage);
+            while (!valid) {
+                this.console.println("\n" + this.promptMessage);
 
-            value = keyboard.readLine();
-            value = value.trim();
+                value = keyboard.readLine();
+                value = value.trim();
 
-            if (value.length() < 1) {
-                   ErrorView.display(this.getClass().getName(),"\nInvalid value: value can not be blank");
-                continue;
+                if (value.length() < 1) {
+                    ErrorView.display(this.getClass().getName(), "\nInvalid value: value can not be blank");
+                    continue;
+                }
+
+                break;
+
             }
-
-            break;
-
-        }
         } catch (Exception e) {
-       ErrorView.display(this.getClass().getName(),"Error in StartProgramView: " + e.getMessage());
-}
+            ErrorView.display(this.getClass().getName(), "Error in StartProgramView: " + e.getMessage());
+        }
         return value;
     }
 
-    
     @Override
     public boolean doAction(String playersName) {
-try {
-        if (playersName.length() < 2) {
-               ErrorView.display(this.getClass().getName(),"\nInvalid players name: " + "The name must be greater than one character in length");
-            return false;
+        try {
+            if (playersName.length() < 2) {
+                ErrorView.display(this.getClass().getName(), "\nInvalid players name: " + "The name must be greater than one character in length");
+                return false;
+            }
+
+            Player player = GameControl.createPlayer(playersName);
+
+            if (player == null) {
+                ErrorView.display(this.getClass().getName(), "\nError creating the player.");
+                return false;
+            }
+
+            this.displayNextView(player);
+        } catch (Exception e) {
+            ErrorView.display(this.getClass().getName(), "Error in StartProgramView" + e.getMessage());
         }
-
-        Player player = GameControl.createPlayer(playersName);
-
-        if (player == null) {
-               ErrorView.display(this.getClass().getName(),"\nError creating the player.");
-            return false;
-        }
-
-        this.displayNextView(player);
-} catch (Exception e) {
-       ErrorView.display(this.getClass().getName(),"Error in StartProgramView" + e.getMessage());
-}
         return true;
     }
 

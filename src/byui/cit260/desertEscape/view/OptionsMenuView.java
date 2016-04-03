@@ -5,7 +5,6 @@
  */
 package byui.cit260.desertEscape.view;
 
-
 /**
  *
  * @author NicolasWilliams
@@ -48,24 +47,24 @@ public class OptionsMenuView extends View {
 
         String value = "";
         boolean valid = false;
-try {
-        while (!valid) {
-            this.console.println("\nSelect an option");
+        try {
+            while (!valid) {
+                this.console.println("\nSelect an option");
 
-            value = keyboard.readLine();
-            value = value.trim();
+                value = keyboard.readLine();
+                value = value.trim();
 
-            if (value.length() < 1) {
-                   ErrorView.display(this.getClass().getName(),"\nInvalid value: value can not be blank");
-                continue;
+                if (value.length() < 1) {
+                    ErrorView.display(this.getClass().getName(), "\nInvalid value: value can not be blank");
+                    continue;
+                }
+
+                break;
+
             }
-
-            break;
-
+        } catch (Exception e) {
+            ErrorView.display(this.getClass().getName(), "Error in OptionsMenuView " + e.getMessage());
         }
-} catch (Exception e) {
-       ErrorView.display(this.getClass().getName(),"Error in OptionsMenuView " + e.getMessage());
-}
         return value;
 
     }
@@ -74,25 +73,25 @@ try {
     public boolean doAction(String value) {
 
         try {
-        value = value.toUpperCase();
+            value = value.toUpperCase();
 
-        switch (value) {
-            case "D":
-                this.difficulty();
-                break;
-            case "H":
-                this.displayHelpMenu();
-                break;
-            case "B":
-                return true;               
+            switch (value) {
+                case "D":
+                    this.difficulty();
+                    break;
+                case "H":
+                    this.displayHelpMenu();
+                    break;
+                case "B":
+                    return true;
 
-            default:
-                   ErrorView.display(this.getClass().getName(),"\n*** Invalid Selection *** Try again, It's not that hard.");
-                break;
+                default:
+                    ErrorView.display(this.getClass().getName(), "\n*** Invalid Selection *** Try again, It's not that hard.");
+                    break;
 
-        }
+            }
         } catch (Exception e) {
-               ErrorView.display(this.getClass().getName(),"Error in OptionsMenuView" + e.getMessage());
+            ErrorView.display(this.getClass().getName(), "Error in OptionsMenuView" + e.getMessage());
         }
         return true;
 
@@ -107,7 +106,5 @@ try {
         HelpMenuView helpMenuView = new HelpMenuView();
         helpMenuView.display();
     }
-
-   
 
 }

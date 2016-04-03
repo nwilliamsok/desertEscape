@@ -10,9 +10,9 @@ package byui.cit260.desertEscape.model;
  * @author NicolasWilliams
  */
 public enum DifficultyLevel {
-    
-  Easy,
-  Hard,
-  Ridiculous;
-    
+
+    Easy,
+    Hard,
+    Ridiculous;
+
 }

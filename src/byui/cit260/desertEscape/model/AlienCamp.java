@@ -10,5 +10,5 @@ package byui.cit260.desertEscape.model;
  * @author NicolasWilliams
  */
 public class AlienCamp {
-    
+
 }

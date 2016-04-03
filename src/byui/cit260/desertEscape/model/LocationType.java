@@ -12,14 +12,14 @@ import java.io.Serializable;
  * @author NicolasWilliams
  */
 public enum LocationType implements Serializable {
-    
+
     Desert___("Desert"),
     Pyramid__("Pyramid"),
     Mountains("Mountains"),
     AlienCamp("Alien Camp"),
     Caves____("Caves"),
     Cliffs___("Caves");
-    
+
     private final String LocationList;
 
     private LocationType(String LocationList) {

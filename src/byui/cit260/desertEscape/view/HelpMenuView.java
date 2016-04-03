@@ -5,7 +5,6 @@
  */
 package byui.cit260.desertEscape.view;
 
-
 /**
  *
  * @author NicolasWilliams
@@ -102,8 +101,7 @@ public class HelpMenuView extends View {
                 + "\n|         *  Nicolas Willams  *          |"
                 + "\n|         *         &         *          |"
                 + "\n|         *   Austin Hanson   *          |"
-                + "\n------------------------------------------"
-                + "\n                                          ");
+                + "\n------------------------------------------");
     }
 
 }

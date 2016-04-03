@@ -11,8 +11,8 @@ import java.io.Serializable;
  *
  * @author NicolasWilliams
  */
-public class Location implements Serializable{
-    
+public class Location implements Serializable {
+
     private LocationType type;
     private String description;
     private Item item;
@@ -38,7 +38,7 @@ public class Location implements Serializable{
     public void setCol(int col) {
         this.col = col;
     }
-   
+
     public LocationType getType() {
         return type;
     }
@@ -71,10 +71,4 @@ public class Location implements Serializable{
         this.survivor = survivor;
     }
 
-   
-
-    
-    
-    
-    
 }

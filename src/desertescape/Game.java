@@ -14,13 +14,13 @@ import byui.cit260.desertEscape.model.Planet;
  * @author NicolasWilliams
  */
 public class Game implements Serializable {
-    
+
     private Player player;
     private Planet planet;
 
     public Game() {
     }
-    
+
     public Player getPlayer() {
         return player;
     }
@@ -36,8 +36,5 @@ public class Game implements Serializable {
     public void setPlanet(Planet planet) {
         this.planet = planet;
     }
-    
-    
-    
-    
+
 }

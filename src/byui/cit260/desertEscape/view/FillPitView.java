@@ -28,7 +28,7 @@ public class FillPitView extends View {
 
         this.console.println(
                 "\n------------------------------------------"
-                + "\n|  Calculate Volume of a Pit             |"
+                + "\n|       Calculate Volume of a Pit        |"
                 + "\n------------------------------------------"
         );
     }
@@ -90,7 +90,7 @@ public class FillPitView extends View {
 
         this.console.println("\n------------------------------------------"
                 + "\n|   The volume of the pit is: " + ObjectiveControl.calcVolumeOfPit(height, width, length)
-                + "  |"
+                + "      |"
                 + "\n------------------------------------------"
         );
         return true;

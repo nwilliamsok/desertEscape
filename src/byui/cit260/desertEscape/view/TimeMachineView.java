@@ -37,26 +37,26 @@ public class TimeMachineView extends View {
 
         boolean done = false;
         try {
-        while (!done) {
-            this.console.println("\n" + this.promptMessage + "\n\nHeight(inches): ");
-            double height = this.getHeight();
-            this.console.println("\nWeight(lbs): ");
-            double weight = this.getWeight();
-            double BMI = ObjectiveControl.calcBMI(height,weight); 
-            this.console.println("\nYour BMI is :" + BMI + ".");
+            while (!done) {
+                this.console.println("\n" + this.promptMessage + "\n\nHeight(inches): ");
+                double height = this.getHeight();
+                this.console.println("\nWeight(lbs): ");
+                double weight = this.getWeight();
+                double BMI = ObjectiveControl.calcBMI(height, weight);
+                this.console.println("\nYour BMI is :" + BMI + ".");
 
-            if (weight <= 0) {
-                this.console.println("The weight must be a number greater than 0.");
-                if (height <= 0) {
-                    this.console.println("The height must be a number greater than 0.");
+                if (weight <= 0) {
+                    this.console.println("The weight must be a number greater than 0.");
+                    if (height <= 0) {
+                        this.console.println("The height must be a number greater than 0.");
+                    }
+
+                } else {
+                    done = this.doAction(BMI);
                 }
-
-            } else {
-                done = this.doAction(BMI);
             }
-        }
         } catch (Exception e) {
-               ErrorView.display(this.getClass().getName(),"Error in TimeMachineView" + e.getMessage());
+            ErrorView.display(this.getClass().getName(), "Error in TimeMachineView" + e.getMessage());
         }
         return true;
     }
@@ -92,7 +92,7 @@ public class TimeMachineView extends View {
                     double num = Double.parseDouble(input);
                     return num;
                 } catch (Exception e) {
-                       ErrorView.display(this.getClass().getName(),"Please enter a number." + e.getMessage());
+                    ErrorView.display(this.getClass().getName(), "Please enter a number." + e.getMessage());
                 }
             }
         } catch (Exception e) {

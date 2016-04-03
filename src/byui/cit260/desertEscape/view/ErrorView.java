@@ -16,13 +16,13 @@ public class ErrorView {
 
     private static final PrintWriter errorFile = DesertEscape.getOutFile();
     private static final PrintWriter logFile = DesertEscape.getLogFile();
-    
+
     public static void display(String className, String errorMessage) {
         errorFile.println(
                 "\n------------------------------------------"
                 + "\n - Error - " + errorMessage
                 + "\n------------------------------------------");
-        
+
         logFile.println(className + " - " + errorMessage);
     }
 }
