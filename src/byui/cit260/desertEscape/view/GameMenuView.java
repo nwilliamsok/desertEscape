@@ -13,7 +13,9 @@ import byui.cit260.desertEscape.model.LocationType;
 import byui.cit260.desertEscape.model.Player;
 import desertescape.DesertEscape;
 import exceptions.GameException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  *
@@ -183,9 +185,11 @@ public class GameMenuView extends View {
     }
 
     private void displayInventory() {
-         for (Item i : inventory) {
-        console.println(DesertEscape.getPlayer().getInventory().get(DesertEscape.getPlayer().getInventory().size() - 1).getName());
-   }
+        console.println("Inventory: \n");
+        for (Item p : DesertEscape.getGame().getPlayer().inventory) {
+            console.println(p.getName());
+        }
+
     }
 
     private void collectItem() {

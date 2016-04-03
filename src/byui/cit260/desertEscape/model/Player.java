@@ -18,7 +18,7 @@ public class Player implements Serializable {
 
     private String name;
     Location location;
-    List<Item> inventory;
+    public List<Item> inventory;
     Difficulty difficulty;
 
     public Player() {
