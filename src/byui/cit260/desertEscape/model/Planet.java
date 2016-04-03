@@ -39,13 +39,37 @@ public class Planet implements Serializable{
         }
     }
 
-    public String getPlanetString() {
+    public String getSurvivorString() {
 
         String rtn = "";
 
         for (int row = 0; row < NUM_ROWS; row++) {
             for (int col = 0; col < NUM_COLS; col++) {
                 rtn += matrix[row][col].getType().name();
+                
+               if (matrix[row][col].getSurvivor() != null){
+                  rtn += matrix[row][col].getSurvivor().getName().charAt(0);
+               }
+                
+                rtn += "\t";
+            }
+            rtn += "\n\n";
+        }
+
+        return rtn;
+    }
+    
+    public String getItemString() {
+
+        String rtn = "";
+
+        for (int row = 0; row < NUM_ROWS; row++) {
+            for (int col = 0; col < NUM_COLS; col++) {
+                rtn += matrix[row][col].getType().name();
+                
+               if (matrix[row][col].getItem() != null){
+                  rtn += matrix[row][col].getItem().getName().charAt(0);
+               }
                 
                 rtn += "\t";
             }

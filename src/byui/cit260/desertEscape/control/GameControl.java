@@ -5,6 +5,7 @@
  */
 package byui.cit260.desertEscape.control;
 
+import byui.cit260.desertEscape.model.Item;
 import byui.cit260.desertEscape.model.Planet;
 import byui.cit260.desertEscape.model.Player;
 import byui.cit260.desertEscape.model.Survivor;
@@ -18,7 +19,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -49,10 +49,41 @@ public class GameControl implements Serializable {
         g.setPlanet(gamePlanet);
 
         setSurvivorLocations(gamePlanet);
+        setItemLocations(gamePlanet);
 
         player.setLocation(gamePlanet.getLocation(0, 0));
 
         DesertEscape.setGame(g);
+    }
+
+    public static List<Item> createItemList() {
+        List<Item> itemList = new ArrayList<>();
+
+        Item Technology = new Item();
+        Technology.setName("Technology");
+        itemList.add(Technology);
+
+        Item Gem = new Item();
+        Gem.setName("Gem");
+        itemList.add(Gem);
+
+        Item Rock = new Item();
+        Rock.setName("Rock");
+        itemList.add(Rock);
+
+        Item Water = new Item();
+        Water.setName("Water");
+        itemList.add(Water);
+
+        Item Ore = new Item();
+        Ore.setName("Ore");
+        itemList.add(Ore);
+
+        Item Schematic = new Item();
+        Schematic.setName("Schematic");
+        itemList.add(Schematic);
+
+        return itemList;
     }
 
     public static List<Survivor> createSurvivorList() {
@@ -130,6 +161,30 @@ public class GameControl implements Serializable {
 
     }
 
+    public static void setItemLocations(Planet planet) {
+
+        List<Item> item = createItemList();
+        boolean success = false;
+
+        for (Item i : item) {
+
+            do {
+                int row = (int) (Math.random() * Planet.NUM_ROWS);
+                int col = (int) (Math.random() * Planet.NUM_COLS);
+
+                success = false;
+
+                if (planet.getLocation(row, col).getItem() == null) {
+                    planet.getLocation(row, col).setItem(i);
+                    success = true;
+                }
+
+            } while (success == false);
+
+        }
+
+    }
+
     public static void saveGame(String filePath) throws GameException {
         try {
             FileOutputStream fos = new FileOutputStream(filePath);
@@ -156,5 +211,5 @@ public class GameControl implements Serializable {
             ErrorView.display("GameControl", e.getMessage());
         }
     }
-    
+
 }

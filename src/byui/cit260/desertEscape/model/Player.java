@@ -21,7 +21,7 @@ public class Player implements Serializable {
     List<Item> inventory;
     Difficulty difficulty;
 
-   public Player() {
+    public Player() {
         inventory = new ArrayList<>();
     }
 
@@ -48,9 +48,6 @@ public class Player implements Serializable {
     public void setInventory(List<Item> inventory) {
         this.inventory = inventory;
     }
-    
-    
-    
 
     public Difficulty getDifficulty() {
         return difficulty;
@@ -59,8 +56,6 @@ public class Player implements Serializable {
     public void setDifficulty(Difficulty difficulty) {
         this.difficulty = difficulty;
     }
-    
-    
 
     @Override
     public int hashCode() {
@@ -97,13 +92,8 @@ public class Player implements Serializable {
         return "Player{" + "name=" + name + ", location=" + location + ", inventory=" + inventory + '}';
     }
 
-    
-
-    
-
-    
-
- 
-
+    public void addItem(Item item) {
+        inventory.add(item);
+    }
 
 }

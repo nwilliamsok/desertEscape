@@ -11,32 +11,20 @@ import java.io.Serializable;
  *
  * @author NicolasWilliams
  */
-public enum Item implements Serializable {
+public class Item implements Serializable {
 
-    Technology("Technology"),
-    Gem("Gem"),
-    Rock("Rock"),
-    Water("Water"),
-    Ore("Ore"),
-    Schematic("Schematic");
+    private String name;
 
-    private final String ItemType;
-
-    private Item(String ItemType) {
-        this.ItemType = ItemType;
+    public Item() {
     }
 
-    public String getItemType() {
-        return ItemType;
+    public String getName() {
+        return name;
     }
 
-    @Override
-    public String toString() {
-        return "Item{" + "ItemType=" + ItemType + '}';
+    public void setName(String name) {
+        this.name = name;
     }
-
-
-   
-   
-
+    
+    
 }

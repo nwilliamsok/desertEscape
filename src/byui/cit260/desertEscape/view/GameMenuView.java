@@ -5,7 +5,7 @@
  */
 package byui.cit260.desertEscape.view;
 
-import byui.cit260.desertEscape.control.GameControl;
+import byui.cit260.desertEscape.control.ItemControl;
 import byui.cit260.desertEscape.control.PlanetControl;
 import byui.cit260.desertEscape.model.Item;
 import byui.cit260.desertEscape.model.Location;
@@ -14,7 +14,6 @@ import byui.cit260.desertEscape.model.Player;
 import desertescape.DesertEscape;
 import exceptions.GameException;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  *
@@ -34,6 +33,7 @@ public class GameMenuView extends View {
                 + "\n                                          "
                 + "\n           V - View Planet                "
                 + "\n           P - Print Planet Map           "
+                + "\n           W - Where Am I?                "
                 + "\n           I - Inventory                  "
                 + "\n           C - Collect Item               "
                 + "\n                                          "
@@ -64,8 +64,8 @@ public class GameMenuView extends View {
                 case "V":
                     viewPlanet();
                     break;
-                    case "P":
-                this.printPlanetMap();
+                case "P":
+                    this.printPlanetMap();
                     break;
                 case "C":
                     collectItem();
@@ -85,17 +85,23 @@ public class GameMenuView extends View {
                 case "R":
                     right();
                     break;
+                case "W":
+                    displayPlayerLocation();
+                    break;
+                case "CHEAT":
+                    cheatView();
+                    break;
                 case "Q":
                     return true;
                 default:
-                       ErrorView.display(this.getClass().getName(),"\n*** Invalid Selection *** Try again, It's not that hard.");
+                    ErrorView.display(this.getClass().getName(), "\n*** Invalid Selection *** Try again, It's not that hard.");
                     break;
 
             }
 
             return false;
         } catch (GameException ex) {
-               ErrorView.display(this.getClass().getName(),"Error in GameMenuView");
+            ErrorView.display(this.getClass().getName(), "Error in GameMenuView");
         }
         return false;
 
@@ -164,23 +170,35 @@ public class GameMenuView extends View {
             fpv.displayFillPitView();
         }
 
+        //Items
+        if (newLocation.getItem() != null) {
+            this.console.println("You found: " + newLocation.getItem().getName());
+        }
+
         //Survivors
         if (newLocation.getSurvivor() != null) {
             this.console.println("You ran into: " + newLocation.getSurvivor().getName() + "\n" + newLocation.getSurvivor().getDescription());
         }
 
     }
-    
+
     private void displayInventory() {
-               throw new UnsupportedOperationException("\tNot supported yet."); //To change body of generated methods, choose Tools | Templates.
-       //this.console.println(Arrays.toString(Item.values()));
+         for (Item i : inventory) {
+        console.println(DesertEscape.getPlayer().getInventory().get(DesertEscape.getPlayer().getInventory().size() - 1).getName());
+   }
     }
 
     private void collectItem() {
-       throw new UnsupportedOperationException("\tNot supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ItemControl ic = new ItemControl();
+        if (ic.findItem(DesertEscape.getPlayer())) {
+            console.println("You have collected " + DesertEscape.getPlayer().getInventory().get(DesertEscape.getPlayer().getInventory().size() - 1).getName());
+        } else {
+            System.err.println("Nothing useful here.");
+
+        }
     }
 
-     private void printPlanetMap() {
+    private void printPlanetMap() {
         try {
             String fileName = "PlanetMap.txt";
             PlanetControl.printPlanetMap(fileName);
@@ -190,5 +208,14 @@ public class GameMenuView extends View {
         }
     }
 
+    private void displayPlayerLocation() {
+        Location l = DesertEscape.getGame().getPlayer().getLocation();
+        console.println("You are at: (" + l.getRow() + ", " + l.getCol() + ")");
+    }
+
+    private void cheatView() {
+        Location curLoc = DesertEscape.getPlayer().getLocation();
+        this.console.println("Item Locations: \n" + DesertEscape.getGame().getPlanet().getItemString() + "\n\n\nSurvivor Locations: \n" + DesertEscape.getGame().getPlanet().getSurvivorString());
+    }
 
 }
